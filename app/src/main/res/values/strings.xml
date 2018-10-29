@@ -1,0 +1,118 @@
+<resources>
+    <string name="app_name">LifeStyle</string>
+
+    <string name="email">البريد الالكترونى</string>
+    <string name="passwrd">كلمة المرور</string>
+    <string name="forget_password">فقدت كلمة المرور</string>
+    <string name="login">دخول</string>
+    <string name="not_have_account">ليس لديك حساب</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="_continue">متابعة</string>
+    <string name="email_confirmation">تاكيد البريد الالكترونى</string>
+    <string name="enter_6_number">برجاء ادخال الرمز المكون من  ستة ارقام</string>
+    <string name="send">ارسال</string>
+    <string name="get_password">استعادة كلمة المرور</string>
+    <string name="get_password_hint">برجاء ادخال البريد الإلكترونى الذى قمت بالتسجيل من خلاله وسنرسل لك رسالة تغيير كلمة المرور</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="please_enter_new_password">من فضلك ادخل كلمة المرور جديدة</string>
+    <string name="confirm_password">اعادة كلمة المرور</string>
+    <string name="user_name">اسم المستخدم</string>
+    <string name="birthday">تاريخ الميلاد</string>
+    <string name="next">التالى</string>
+    <string name="lenght">الطول</string>
+    <string name="weight">الوزن</string>
+    <string name="male">ذكر</string>
+    <string name="female">انثى</string>
+    <string name="sleep_times">مواعيد النوم</string>
+    <string name="sleep_time">ميعاد النوم</string>
+    <string name="_static">ثابتة</string>
+    <string name="dynamic">متغيرة</string>
+    <string name="wakeup_time">ميعاد الاستيقاظ</string>
+    <string name="invalid_email">البريد الالكترونى غير صحيح</string>
+    <string name="invalid_password" />
+    <string name="register">تسجيل</string>
+    <string name="height">الطول</string>
+    <string name="required">برجاء ادخال البيانات</string>
+    <string name="invalid_confirm_password">رقم المرور وتاكيد رقم المرور غير متطابقان</string>
+    <string name="check_email">تم ارسال كود على البريد الالكترونى</string>
+    <array name="work_type">
+        <item>درجة النشاط</item>
+        <item>خامل (ممارسة ضئيلة أو معدومة)</item>
+        <item>قليل النشاط (تمارين رياضية خفيفة)</item>
+        <item>متوسط النشاط (تمارين رياضية متوسطة)</item>
+        <item>نشيط جدا</item>
+        <item>نشيط للغاية</item>
+    </array>
+    <array name="goal">
+        <item>الهدف</item>
+        <item>خسارة الوزن</item>
+        <item>محافظة على الوزن</item>
+        <item>زيارة الوزن</item>
+    </array>
+    <array name="food_type">
+        <item>اختر مكونات الوجبه</item>
+        <item>خبز</item>
+        <item>السكريات</item>
+        <item>الفاكهة</item>
+        <item>الخضروات</item>
+        <item>لحم</item>
+        <item>الالبان</item>
+        <item>البقوليات</item>
+        <item>الدهون</item>
+
+    </array>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="home">الصفحة الرئيسية</string>
+    <string name="profile">الصفحة الشخصية</string>
+    <string name="edit">تعديل</string>
+    <string name="save">حفظ</string>
+    <string name="invalid_phone">يجب ان يكون رقم الهاتف 11 رقم</string>
+    <string name="goals_required">برجاء اختر الهدف</string>
+    <string name="work_type_required">برجاء ادخل درجه العمل</string>
+    <string name="profile_updated">تم تعديل الحساب الشخصى</string>
+    <string name="current_wight">الوزن الحالى</string>
+    <string name="kg">كـجـم</string>
+    <string name="required_wight">الوزن المطلوب</string>
+    <string name="result_of_body">نتيجة مؤشر كتلة الجسم</string>
+    <string name="overweight">بدين</string>
+    <string name="overweight_2">وزن زائد</string>
+    <string name="thin">نحيف</string>
+    <string name="good_weight">وزن مثالى</string>
+    <string name="my_goal">هدفى هو</string>
+    <string name="have_overweight">معدل كتلة الجسم </string>
+    <string name="edit_weight">تعديل الوزن</string>
+    <string name="updated">تم التعديل</string>
+    <string name="cancel">الغاء</string>
+    <string name="food_program">البرنامج الغذائى</string>
+    <string name="breakfast">إفطار</string>
+    <string name="dinner">عشاء</string>
+    <string name="lunch">غداء</string>
+    <string name="agree">موافق</string>
+    <string name="make_food">تكوين وجبه</string>
+    <string name="about_us">حول التطبيق</string>
+    <string name="contact_us_success"> شكرا لك, سيتم التواصل معك فى اسرع وقت ممكن",</string>
+    <string name="add_question">من فضلك اضف استفسارك</string>
+    <string name="contact_us">تواصل معنا</string>
+    <string name="meal_added">شكرا لك, لقد تم اختيار الوجبة بنجاح\"</string>
+    <string name="name">الاسم</string>
+    <string name="phone">رقم الهاتف</string>
+    <string name="create_meal">تكوين وجبه</string>
+    <string name="meal_created">شكرا لك, لقد تم تكوين الوجبة بنجاح"</string>
+    <string name="type">الصنف</string>
+    <string name="calory">الكالورى</string>
+    <string name="sum">المجموع</string>
+    <string name="notification_breakfast">وقت وجبه الفطار</string>
+    <string name="notification_lunch">وقت الغداء</string>
+    <string name="notification_dinner">عشاء خفيف</string>
+    <string name="notification_snacks">يلا ناكل سناكس</string>
+    <string name="calculate">احسب</string>
+</resources>
