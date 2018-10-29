@@ -7,5 +7,12 @@
     <color name="black">#000</color>
     <color name="white">#fff</color>
     <color name="red">#ff0000</color>
-
+    <color name="dark_red">#d57053</color>
+    <color name="light_blue">#63d0e0</color>
+    <color name="dark_blue">#4d7dd5</color>
+    <color name="dark_green">#71a75c</color>
+    <color name="light_green">#cce44d</color>
+    <color name="yellow">#eec131</color>
+    <color name="dark_gray">#aaaaaa</color>
+    <color name="purple">#9863e6</color>
 </resources>
