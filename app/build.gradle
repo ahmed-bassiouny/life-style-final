@@ -53,4 +53,11 @@ dependencies {
     }
     implementation 'com.shawnlin:number-picker:2.4.6';
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.15'
+    implementation 'com.timqi.sectorprogressview:library:2.0.1'
+    implementation 'com.kevalpatel2106:ruler-picker:1.1'
+
+
+
+
+
 }

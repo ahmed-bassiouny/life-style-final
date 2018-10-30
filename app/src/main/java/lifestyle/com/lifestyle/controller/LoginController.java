@@ -17,8 +17,8 @@ import lifestyle.com.lifestyle.model.User;
 public class LoginController extends BaseController {
 
     private IUserInteractor interactor;
-    private FirebaseAuth mAuth;
-    private GoogleSignInOptions gso ;
+    //private FirebaseAuth mAuth;
+    //private GoogleSignInOptions gso ;
 
 
 
@@ -29,11 +29,11 @@ public class LoginController extends BaseController {
     }
 
     private void initGoogle(){
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+      /*  gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-        mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();*/
 
     }
 
@@ -61,7 +61,7 @@ public class LoginController extends BaseController {
         }
     };
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+ /*   private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
 
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -81,5 +81,5 @@ public class LoginController extends BaseController {
                     }
                 });
     }
-
+*/
 }

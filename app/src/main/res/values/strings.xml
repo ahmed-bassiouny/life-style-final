@@ -115,4 +115,14 @@
     <string name="notification_dinner">عشاء خفيف</string>
     <string name="notification_snacks">يلا ناكل سناكس</string>
     <string name="calculate">احسب</string>
+    <string name="age">عمرك</string>
+    <string name="bmi">BMI</string>
+    <array name="height">
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+        <item>10</item>
+    </array>
 </resources>

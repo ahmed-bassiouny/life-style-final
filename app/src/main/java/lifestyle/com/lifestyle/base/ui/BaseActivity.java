@@ -27,27 +27,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
-    public void initToolbar() {
-        //toolbar = findViewById(R.id.toolbar);
+    public void initToolbar(String title) {
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        final CharSequence title = toolbar.getTitle();
-        final ArrayList<View> outViews = new ArrayList<>(1);
-        toolbar.findViewsWithText(outViews, title, View.FIND_VIEWS_WITH_TEXT);
-            toolbar.requestLayout();
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        }
+        TextView tvTitle = toolbar.findViewById(R.id.tv_title);
+        tvTitle.setText(title);
+        findViewById(R.id.iv_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
-            onBackPressed();
-        return super.onOptionsItemSelected(item);
-    }
-
     public Toolbar getToolbar() {
         return this.toolbar;
     }
@@ -55,11 +46,5 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void hideStatusBar() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    }
-
-
-    protected void setTitle(String title) {
-        if (getSupportActionBar() != null)
-            getSupportActionBar().setTitle(title);
     }
 }

@@ -37,13 +37,14 @@ public class SignInFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
     }
-
+/*
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
+    }*/
 
 
+/*
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -63,5 +64,6 @@ public class SignInFragment extends Fragment {
             }
         }
     }
+*/
 
 }
