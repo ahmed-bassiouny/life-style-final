@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@drawable/background_gradiant"
     tools:context=".activity.MBICalcActivity">
 
     <RelativeLayout
@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
+            android:visibility="gone"
             android:src="@drawable/bg_small" />
 
         <include layout="@layout/toolbar" />
@@ -48,7 +49,7 @@
                     android:layout_margin="10dp"
                     app:progress="35"
                     app:progressBarThickness="8dp"
-                    app:progressbarColor="#2ab6b7" />
+                    app:progressbarColor="@color/white" />
 
                 <TextView
                     android:id="@+id/text_progress"
@@ -97,7 +98,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/fill_light_blue"
                 android:elevation="2dp"
-                android:padding="5dp"
+                android:padding="2dp"
                 android:src="@drawable/man" />
 
             <ImageView
@@ -132,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:text="@string/height"
-                    android:textColor="@color/dark_blue" />
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -140,7 +141,7 @@
                     android:layout_gravity="end"
                     android:padding="10dp"
                     android:text="CM"
-                    android:textColor="@color/dark_blue" />
+                    android:textColor="@color/white" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recycler_height"
@@ -163,7 +164,7 @@
                     android:padding="10dp"
                     android:text="@string/weight"
                     android:layout_marginEnd="10dp"
-                    android:textColor="@color/dark_blue" />
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -171,7 +172,7 @@
                     android:layout_gravity="end"
                     android:padding="10dp"
                     android:text="KM"
-                    android:textColor="@color/dark_blue" />
+                    android:textColor="@color/white" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recycler_weight"

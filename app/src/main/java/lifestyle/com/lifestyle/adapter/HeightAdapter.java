@@ -1,6 +1,7 @@
 package lifestyle.com.lifestyle.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,8 +65,8 @@ public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.MyViewHold
             holder.arrow.setVisibility(View.VISIBLE);
         }
         else {
-            holder.linear.setBackgroundColor(context.getResources().getColor(R.color.white));
-            holder.tvNumber.setTextColor(context.getResources().getColor(R.color.light_blue));
+            holder.linear.setBackgroundColor(Color.TRANSPARENT);
+            holder.tvNumber.setTextColor(context.getResources().getColor(R.color.white));
             holder.arrow.setVisibility(View.GONE);
         }
     }
