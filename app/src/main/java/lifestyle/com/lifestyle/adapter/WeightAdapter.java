@@ -16,14 +16,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import lifestyle.com.lifestyle.R;
 
-public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.MyViewHolder> {
+public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.MyViewHolder> {
 
     private List<Integer> list;
     private Context context;
     private int selectedItem = -1;
     private IClickAdapter<Integer> clickAdapter;
 
-    public HeightAdapter(Context context, List<Integer> list,IClickAdapter<Integer> clickAdapter) {
+    public WeightAdapter(Context context, List<Integer> list,IClickAdapter<Integer> clickAdapter) {
         this.list = list;
         this.context = context;
         this.clickAdapter = clickAdapter;

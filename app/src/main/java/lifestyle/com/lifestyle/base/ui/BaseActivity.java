@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 import lifestyle.com.lifestyle.R;
 
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements IActivity{
 
     private Toolbar toolbar;
 

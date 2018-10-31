@@ -47,7 +47,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_margin="10dp"
-                    app:progress="35"
+                    app:progress="0"
                     app:progressBarThickness="8dp"
                     app:progressbarColor="@color/white" />
 
@@ -68,7 +68,7 @@
             android:layout_below="@+id/linear_header"
             android:layout_marginStart="10dp"
             android:layout_marginTop="4dp"
-            android:textColor="@color/dark_blue"
+            android:textColor="@color/white"
             android:layout_marginEnd="10dp"
             android:text="@string/age" />
 
@@ -98,6 +98,7 @@
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/fill_light_blue"
                 android:elevation="2dp"
+                android:id="@+id/iv_male"
                 android:padding="2dp"
                 android:src="@drawable/man" />
 
@@ -107,6 +108,7 @@
                 android:layout_marginStart="10dp"
                 android:background="@drawable/fill_white"
                 android:elevation="4dp"
+                android:id="@+id/iv_female"
                 android:padding="5dp"
                 android:src="@drawable/female" />
         </LinearLayout>
@@ -189,6 +191,7 @@
             android:background="@drawable/fill_light_blue"
             android:textColor="@color/white"
             android:layout_marginBottom="20dp"
+            android:id="@+id/btn_calc"
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="@string/calculate"/>

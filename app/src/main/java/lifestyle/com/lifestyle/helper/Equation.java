@@ -13,9 +13,9 @@ import lifestyle.com.lifestyle.model.User;
 public class Equation {
 
 
-    public static double getBMR() {
-        double result = 0;
-        User user = SharedPrefManager.getObject(Constants.USER, User.class);
+    public static float calBMR(int weight,int height,int age,boolean isMale) {
+        float result = 0;
+       /*  user = SharedPrefManager.getObject(Constants.USER, User.class);
         float weight = Float.parseFloat(user.getCurrentWeight());
         float hight = Float.parseFloat(user.getHeight());
         Calendar c;
@@ -24,15 +24,19 @@ public class Equation {
         } catch (ParseException e) {
             return 0;
         }
-        int age = Utils.getAge(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
-        Log.e("getBMR: ", age + "");
-        if (user.isMale()) {
-            result = 66 + (13.7 * weight) + (5 * hight) - (6.8 * age);
-        } else if (user.isFemale()) {
-            result = 655 + (9.6 * weight) + (1.8 * hight) - (4.7 * age);
+        int age = Utils.getAge(c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));*/
+        if (isMale) {
+            result = (float) (66 + (13.7 * weight) + (5 * height) - (6.8 * age));
+        } else {
+            result = (float) (655 + (9.6 * weight) + (1.8 * height) - (4.7 * age));
         }
         return result;
     }
+    public static float calBMI(float w, float h) {
+        float height = h / 100;
+        return w / (height * height);
+    }
+
 
     private static Calendar getDateofbieth(String date) throws ParseException {
         Calendar cal = Calendar.getInstance();
@@ -41,9 +45,9 @@ public class Equation {
         return cal;
     }
 
-    public static double getTEE() {
+    /*public static double getTEE() {
         return getMotionCoefficient() * getBMR();
-    }
+    }*/
 
     private static double getMotionCoefficient() {
         User user = SharedPrefManager.getObject(Constants.USER, User.class);

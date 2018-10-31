@@ -18,10 +18,12 @@ public class AgeAdapter extends RecyclerView.Adapter<AgeAdapter.MyViewHolder> {
     private List<Integer> list;
     private Context context;
     private int selectedItem = -1;
+    private IClickAdapter<Integer> clickAdapter;
 
-    public AgeAdapter(Context context, List<Integer> list) {
+    public AgeAdapter(Context context, List<Integer> list,IClickAdapter<Integer> clickAdapter) {
         this.list = list;
         this.context = context;
+        this.clickAdapter = clickAdapter;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -37,6 +39,7 @@ public class AgeAdapter extends RecyclerView.Adapter<AgeAdapter.MyViewHolder> {
                 public void onClick(View view) {
                     selectedItem = getAdapterPosition();
                     notifyDataSetChanged();
+                    clickAdapter.click(list.get(selectedItem),selectedItem);
                 }
             });
         }
@@ -60,7 +63,7 @@ public class AgeAdapter extends RecyclerView.Adapter<AgeAdapter.MyViewHolder> {
         else {
             holder.tvNumber.setBackground(null);
             holder.tvNumber.setTextSize(18);
-            holder.tvNumber.setTextColor(context.getResources().getColor(R.color.dark_blue));
+            holder.tvNumber.setTextColor(context.getResources().getColor(R.color.white));
         }
     }
 
@@ -70,5 +73,4 @@ public class AgeAdapter extends RecyclerView.Adapter<AgeAdapter.MyViewHolder> {
             return 0;
         return list.size();
     }
-
 }

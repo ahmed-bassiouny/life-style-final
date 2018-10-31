@@ -14,4 +14,14 @@ public class HomeActivity extends BaseActivity {
         hideStatusBar();
         setContentView(R.layout.activity_home);
     }
+
+    @Override
+    public void startLoading() {
+
+    }
+
+    @Override
+    public void endLoading() {
+
+    }
 }

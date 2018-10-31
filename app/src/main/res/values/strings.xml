@@ -117,6 +117,9 @@
     <string name="calculate">احسب</string>
     <string name="age">عمرك</string>
     <string name="bmi">BMI</string>
+    <string name="invalid_age">برجاء اختار العمر</string>
+    <string name="invalid_height">برجاء اختار الطول</string>
+    <string name="invalid_weight">برجاء اختار الوزن</string>
     <array name="height">
         <item>10</item>
         <item>10</item>
