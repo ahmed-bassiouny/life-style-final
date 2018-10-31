@@ -1,10 +1,12 @@
 package lifestyle.com.lifestyle.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +32,8 @@ public class MBICalcActivity extends BaseActivity {
     CircleProgressBar progressBar;
     @BindView(R.id.text_progress)
     TextView text_progress;
+    @BindView(R.id.tv_status)
+    TextView tvStatus;
     @BindView(R.id.recycler_age)
     RecyclerView recyclerAge;
     @BindView(R.id.recycler_height)
@@ -70,15 +74,15 @@ public class MBICalcActivity extends BaseActivity {
 
     @OnClick(R.id.iv_male)
     public void setMale() {
-        ivMale.setBackground(getDrawable(R.drawable.fill_light_blue));
-        ivFemale.setBackground(getDrawable(R.drawable.fill_white));
+        ivMale.setBackground(getDrawable(R.drawable.fill_white));
+        ivFemale.setBackgroundColor(Color.TRANSPARENT);
         isMale = true;
     }
 
     @OnClick(R.id.iv_female)
     public void setFemale() {
-        ivMale.setBackground(getDrawable(R.drawable.fill_white));
-        ivFemale.setBackground(getDrawable(R.drawable.fill_light_blue));
+        ivFemale.setBackground(getDrawable(R.drawable.fill_white));
+        ivMale.setBackgroundColor(Color.TRANSPARENT);
         isMale = false;
     }
 
@@ -91,7 +95,9 @@ public class MBICalcActivity extends BaseActivity {
         } else if (weight == 0) {
             controller.showErrorMessage(getString(R.string.invalid_weight));
         } else {
-            setBMI(Equation.calBMI(weight, height));
+            float result = Equation.calBMI(weight, height);
+            setBMI(result);
+            tvStatus.setText(controller.getBMIStatus(result));
         }
     }
 
