@@ -82,7 +82,7 @@
     <string name="save">حفظ</string>
     <string name="invalid_phone">يجب ان يكون رقم الهاتف 11 رقم</string>
     <string name="goals_required">برجاء اختر الهدف</string>
-    <string name="work_type_required">برجاء اختر نوع النشاط</string>
+    <string name="work_type_required">برجاء اختر درجة النشاط</string>
     <string name="profile_updated">تم تعديل الحساب الشخصى</string>
     <string name="current_wight">الوزن الحالى</string>
     <string name="kg">كـجـم</string>
@@ -126,7 +126,7 @@
     <string name="invalid_height">برجاء اختار الطول</string>
     <string name="invalid_weight">برجاء اختار الوزن</string>
     <string name="gender">النوع</string>
-    <string name="work_type">نوع النشاط</string>
+    <string name="work_type">درحة النشاط</string>
     <string name="goal">الهدف</string>
     <string name="invalid_birthday">من فضلك ادخل تاريخ الميلاد</string>
     <string name="calc_calory">احسب سعراتك</string>
