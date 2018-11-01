@@ -9,4 +9,7 @@ public interface Constants {
     String SHOW_NOTIFICATION_MEAL = "notification_meal";
     String SHOW_NOTIFICATION_WATER = "notification_water";
     String DATE_FORMAT = "yyyy-MM-dd";
+    String TYPE = "type";
+    String WORK_TYPE = "work_type";
+    String GOAL = "goal";
 }

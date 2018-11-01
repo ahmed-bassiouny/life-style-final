@@ -73,21 +73,21 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear_weight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/linear_weight"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:weightSum="2">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:elevation="8dp"
-            android:layout_margin="5dp">
+            android:elevation="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -114,17 +114,17 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:elevation="8dp"
-            android:layout_margin="5dp">
+            android:elevation="8dp">
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
                 android:padding="10dp"
                 android:text="@string/weight"
-                android:layout_marginEnd="10dp"
                 android:textColor="@color/white" />
 
             <TextView
@@ -159,7 +159,7 @@
             android:layout_height="wrap_content"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:hint="@string/birthday"
+            android:hint="@string/work_type"
             android:textColor="@color/white"
             android:textColorHint="@color/white" />
     </android.support.design.widget.TextInputLayout>
@@ -179,8 +179,20 @@
             android:layout_height="wrap_content"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:hint="@string/birthday"
+            android:hint="@string/goal"
             android:textColor="@color/white"
             android:textColorHint="@color/white" />
     </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_calc"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/fill_light_blue"
+        android:gravity="center"
+        android:text="@string/calculate"
+        android:textColor="@color/white" />
 </LinearLayout>
