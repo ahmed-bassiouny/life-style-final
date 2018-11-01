@@ -8,4 +8,5 @@ public interface Constants {
     String NOTIFICATION = "notification";
     String SHOW_NOTIFICATION_MEAL = "notification_meal";
     String SHOW_NOTIFICATION_WATER = "notification_water";
+    String DATE_FORMAT = "yyyy-MM-dd";
 }
