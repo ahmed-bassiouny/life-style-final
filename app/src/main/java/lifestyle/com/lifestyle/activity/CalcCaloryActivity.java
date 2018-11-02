@@ -57,6 +57,7 @@ public class CalcCaloryActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        hideStatusBar();
         setContentView(R.layout.activity_calc_calory);
         initToolbar(getString(R.string.calc_calory));
         ButterKnife.bind(this);
@@ -159,7 +160,7 @@ public class CalcCaloryActivity extends BaseActivity {
             controller.showErrorMessage(getString(R.string.goals_required));
         } else {
             if (btnCalc.getText().toString().equals(getString(R.string.save))) {
-                controller.launchActivityWithFinish(HomeActivity.class);
+                //controller.launchActivityWithFinish(HomeActivity.class);
             } else {
                 // todo show calory page result
             }
