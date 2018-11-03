@@ -14,6 +14,7 @@ import com.ycuwq.datepicker.date.DatePickerDialogFragment;
 
 import java.util.Locale;
 
+import bassiouny.ahmed.genericmanager.SharedPrefManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -26,6 +27,7 @@ import lifestyle.com.lifestyle.controller.MBICalcController;
 import lifestyle.com.lifestyle.custome_views.MyDatePickerDialogFragment;
 import lifestyle.com.lifestyle.fragments.WorkTypeListDialogFragment;
 import lifestyle.com.lifestyle.helper.Constants;
+import lifestyle.com.lifestyle.model.User;
 
 public class CalcCaloryActivity extends BaseActivity {
 
@@ -52,7 +54,10 @@ public class CalcCaloryActivity extends BaseActivity {
     private int weight = 0;
     private int height = 0;
     private boolean isMale = true;
-
+    private int goalKey = 0;
+    private int workTypeKey = 0;
+    private HeightAdapter heightAdapter;
+    private WeightAdapter weightAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +68,36 @@ public class CalcCaloryActivity extends BaseActivity {
         ButterKnife.bind(this);
         controller = new MBICalcController(this);
         recyclerHeight.setLayoutManager(new LinearLayoutManager(this));
-        recyclerHeight.setAdapter(new HeightAdapter(this, controller.getHeight(), selectHeight));
+        heightAdapter = new HeightAdapter(this, controller.getHeight(), selectHeight);
+        recyclerHeight.setAdapter(heightAdapter);
 
         recyclerWeight.setLayoutManager(new LinearLayoutManager(this));
-        recyclerWeight.setAdapter(new WeightAdapter(this, controller.getWeight(), selectWeight));
+        weightAdapter = new WeightAdapter(this, controller.getWeight(), selectWeight);
+        recyclerWeight.setAdapter(weightAdapter);
+
+        setDataUI();
+    }
+
+    private void setDataUI() {
+        User user = SharedPrefManager.getObject(Constants.USER, User.class);
+        etBirthday.setText(user.getBirthday());
+        if (user.isFemale()) {
+            setFemale();
+        } else {
+            setMale();
+        }
+        // set weight
+        int weight = Integer.parseInt(user.getCurrentWeight());
+        int weightIndex = weight - Constants.MIN_WEIGHT;
+        weightAdapter.clickOnItem(weightIndex);
+        recyclerWeight.scrollToPosition(weightIndex);
+        // set hieght
+        int height = Integer.parseInt(user.getHeight());
+        int heightIndex = height - Constants.MIN_HEIGHT;
+        heightAdapter.clickOnItem(heightIndex);
+        recyclerHeight.scrollToPosition(heightIndex);
+        etWorkType.setText(getResources().getStringArray(R.array.work_type)[user.getWorkTypeKey()]);
+        etGoal.setText(getResources().getStringArray(R.array.goal)[user.getPurposeKey()]);
     }
 
     @OnClick(R.id.et_birthday)
@@ -93,6 +124,7 @@ public class CalcCaloryActivity extends BaseActivity {
             @Override
             public void onSelectItem(int position) {
                 etWorkType.setText(getResources().getStringArray(R.array.work_type)[position]);
+                workTypeKey = position;
                 fragment.dismiss();
             }
         };
@@ -110,6 +142,7 @@ public class CalcCaloryActivity extends BaseActivity {
             @Override
             public void onSelectItem(int position) {
                 etGoal.setText(getResources().getStringArray(R.array.goal)[position]);
+                goalKey = position;
                 fragment.dismiss();
             }
         };
@@ -159,12 +192,28 @@ public class CalcCaloryActivity extends BaseActivity {
         } else if (etGoal.getText().toString().isEmpty()) {
             controller.showErrorMessage(getString(R.string.goals_required));
         } else {
+            saveData();
             if (btnCalc.getText().toString().equals(getString(R.string.save))) {
                 //controller.launchActivityWithFinish(HomeActivity.class);
             } else {
                 // todo show calory page result
             }
         }
+    }
+
+    private void saveData() {
+        User user = SharedPrefManager.getObject(Constants.USER, User.class);
+        user.setHeight(String.valueOf(height));
+        user.setCurrentWeight(String.valueOf(weight));
+        user.setBirthday(etBirthday.getText().toString());
+        if (isMale) {
+            user.setMale();
+        } else {
+            user.setFemale();
+        }
+        user.setWorkType(String.valueOf(workTypeKey));
+        user.setPurpose(String.valueOf(goalKey));
+        SharedPrefManager.setObject(Constants.USER,user);
     }
 
     @Override

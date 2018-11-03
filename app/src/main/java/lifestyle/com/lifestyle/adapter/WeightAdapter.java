@@ -81,4 +81,9 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.MyViewHold
         return list.size();
     }
 
+    public void clickOnItem(int position) {
+        selectedItem = position;
+        notifyDataSetChanged();
+        clickAdapter.click(list.get(selectedItem), selectedItem);
+    }
 }

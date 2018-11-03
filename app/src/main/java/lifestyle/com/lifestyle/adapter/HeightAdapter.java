@@ -23,7 +23,7 @@ public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.MyViewHold
     private int selectedItem = -1;
     private IClickAdapter<Integer> clickAdapter;
 
-    public HeightAdapter(Context context, List<Integer> list,IClickAdapter<Integer> clickAdapter) {
+    public HeightAdapter(Context context, List<Integer> list, IClickAdapter<Integer> clickAdapter) {
         this.list = list;
         this.context = context;
         this.clickAdapter = clickAdapter;
@@ -46,7 +46,7 @@ public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.MyViewHold
                 public void onClick(View view) {
                     selectedItem = getAdapterPosition();
                     notifyDataSetChanged();
-                    clickAdapter.click(list.get(selectedItem),selectedItem);
+                    clickAdapter.click(list.get(selectedItem), selectedItem);
                 }
             });
         }
@@ -66,8 +66,7 @@ public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.MyViewHold
             holder.linear.setBackgroundColor(context.getResources().getColor(R.color.light_blue));
             holder.tvNumber.setTextColor(context.getResources().getColor(R.color.white));
             holder.arrow.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             holder.linear.setBackgroundColor(Color.TRANSPARENT);
             holder.tvNumber.setTextColor(context.getResources().getColor(R.color.white));
             holder.arrow.setVisibility(View.GONE);
@@ -81,4 +80,9 @@ public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.MyViewHold
         return list.size();
     }
 
+    public void clickOnItem(int position) {
+        selectedItem = position;
+        notifyDataSetChanged();
+        clickAdapter.click(list.get(selectedItem), selectedItem);
+    }
 }

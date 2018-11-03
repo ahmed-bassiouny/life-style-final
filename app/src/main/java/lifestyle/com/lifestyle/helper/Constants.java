@@ -12,4 +12,10 @@ public interface Constants {
     String TYPE = "type";
     String WORK_TYPE = "work_type";
     String GOAL = "goal";
+    int MAX_WEIGHT = 200;
+    int MAX_HEIGHT = 250;
+    int MAX_AGE = 60;
+    int MIN_WEIGHT = 40;
+    int MIN_HEIGHT = 140;
+    int MIN_AGE = 10;
 }

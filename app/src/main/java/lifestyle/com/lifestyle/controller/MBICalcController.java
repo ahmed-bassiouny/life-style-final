@@ -7,6 +7,7 @@ import java.util.List;
 
 import lifestyle.com.lifestyle.R;
 import lifestyle.com.lifestyle.base.ui.BaseController;
+import lifestyle.com.lifestyle.helper.Constants;
 
 public class MBICalcController extends BaseController {
 
@@ -19,20 +20,20 @@ public class MBICalcController extends BaseController {
 
     public List<Integer> getAges() {
         List<Integer> results = new ArrayList<>();
-        for (int i = 10; i < 60; i++)
+        for (int i = Constants.MIN_AGE; i < Constants.MAX_AGE; i++)
             results.add(i);
         return results;
     }
     public List<Integer> getHeight() {
         List<Integer> results = new ArrayList<>();
-        for (int i = 140; i < 250; i++)
+        for (int i = Constants.MIN_HEIGHT; i < Constants.MAX_HEIGHT; i++)
             results.add(i);
         return results;
     }
 
     public List<Integer> getWeight() {
         List<Integer> results = new ArrayList<>();
-        for (int i = 40; i < 200; i++)
+        for (int i = Constants.MIN_WEIGHT; i < Constants.MAX_WEIGHT; i++)
             results.add(i);
         return results;
     }

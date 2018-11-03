@@ -19,10 +19,6 @@ public class MyApplication extends Application {
         User user = SharedPrefManager.getObject(Constants.USER, User.class);
         if (user == null) {
             user = new User();
-            user.setBirthday("1993-01-31");
-            user.setCurrentWeight("80");
-            user.setHeight("170");
-            user.setMale();
             SharedPrefManager.setObject(Constants.USER, user);
         }
     }
