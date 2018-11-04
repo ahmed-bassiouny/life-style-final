@@ -18,8 +18,8 @@ public class MealsInteractor implements IMealsInteractor {
     }
 
     @Override
-    public void getMeals(String meal, int offset, int limit, RequestCallback<BaseList<Meal>> callback) {
-     interactor.getMeals(meal,offset,limit,callback);
+    public void getMeals(String meal, String calories,int offset, int limit, RequestCallback<BaseList<Meal>> callback) {
+     interactor.getMeals(meal,calories,offset,limit,callback);
     }
 
     @Override

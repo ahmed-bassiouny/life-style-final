@@ -133,4 +133,6 @@
     <string name="snacks">سناكس</string>
     <string name="another_meal">وجبة اخرى</string>
     <string name="meals">الوجبات</string>
+    <string name="count">الكمية</string>
+    <string name="calory_hint">هذه الوجبه تحتوى على</string>
 </resources>

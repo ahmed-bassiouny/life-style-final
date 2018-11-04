@@ -18,4 +18,5 @@ public interface Constants {
     int MIN_WEIGHT = 40;
     int MIN_HEIGHT = 140;
     int MIN_AGE = 10;
+    String CALORIES = "calories";
 }

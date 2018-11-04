@@ -27,6 +27,7 @@ import lifestyle.com.lifestyle.controller.MBICalcController;
 import lifestyle.com.lifestyle.custome_views.MyDatePickerDialogFragment;
 import lifestyle.com.lifestyle.fragments.WorkTypeListDialogFragment;
 import lifestyle.com.lifestyle.helper.Constants;
+import lifestyle.com.lifestyle.helper.Equation;
 import lifestyle.com.lifestyle.model.User;
 
 public class CalcCaloryActivity extends BaseActivity {
@@ -213,7 +214,14 @@ public class CalcCaloryActivity extends BaseActivity {
         }
         user.setWorkType(String.valueOf(workTypeKey));
         user.setPurpose(String.valueOf(goalKey));
-        SharedPrefManager.setObject(Constants.USER,user);
+        SharedPrefManager.setObject(Constants.USER, user);
+        SharedPrefManager.setString(Constants.CALORIES, calculateCalory());
+    }
+
+    private String calculateCalory() {
+        double bmrResut = Equation.calBMR(weight, height, etBirthday.getText().toString(), isMale);
+        int tee = (int) Equation.getTEE(bmrResut);
+        return String.valueOf(tee);
     }
 
     @Override

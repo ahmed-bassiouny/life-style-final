@@ -7,19 +7,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import lifestyle.com.lifestyle.R;
+import lifestyle.com.lifestyle.model.Food;
 
-public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MyViewHolder> {
+public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> {
 
     private Context context;
-    private List<Integer> list;
+    private List<Food> list;
 
-    public MealAdapter(Context context, List<Integer> list) {
-        this.list = list;
+    public FoodAdapter(Context context) {
+        this.list = new ArrayList<>();
         this.context = context;
     }
 
@@ -60,10 +62,11 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MyViewHolder> 
             holder.tvCount.setTextColor(context.getResources().getColor(R.color.dark_blue));
             holder.tvCalory.setTextColor(context.getResources().getColor(R.color.dark_blue));
         }
-        holder.tvType.setText("");
-        holder.tvName.setText("");
-        holder.tvCount.setText("");
-        holder.tvCalory.setText("");
+        Food item = list.get(position);
+        holder.tvType.setText(item.getFoodType());
+        holder.tvName.setText(item.getName());
+        holder.tvCount.setText(item.getQuantity());
+        holder.tvCalory.setText(item.getCalories());
     }
 
     @Override
@@ -71,5 +74,9 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MyViewHolder> 
         if (list == null)
             return 0;
         return list.size();
+    }
+    public void setList(List<Food> list){
+        this.list = list;
+        notifyDataSetChanged();
     }
 }

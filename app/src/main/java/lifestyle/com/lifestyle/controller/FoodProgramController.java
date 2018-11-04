@@ -6,10 +6,12 @@ import android.support.v4.app.Fragment;
 
 import java.util.List;
 
+import bassiouny.ahmed.genericmanager.SharedPrefManager;
 import lifestyle.com.lifestyle.R;
 import lifestyle.com.lifestyle.api.RequestCallback;
 import lifestyle.com.lifestyle.base.api.BaseList;
 import lifestyle.com.lifestyle.base.ui.BaseController;
+import lifestyle.com.lifestyle.helper.Constants;
 import lifestyle.com.lifestyle.interactor.IMealsInteractor;
 import lifestyle.com.lifestyle.interactor.MealsInteractor;
 import lifestyle.com.lifestyle.model.Meal;
@@ -30,7 +32,8 @@ public class FoodProgramController extends BaseController {
         }
         getFragment().startLoading();
         this.result = result;
-        interactor.getMeals(meals, 0, 100, callback);
+        String calories =  SharedPrefManager.getString(Constants.CALORIES);
+        interactor.getMeals(meals, calories, 0, 100, callback);
     }
 
     public void addMeal(int id, final IResult result) {

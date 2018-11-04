@@ -19,6 +19,7 @@ public class MyApplication extends Application {
         User user = SharedPrefManager.getObject(Constants.USER, User.class);
         if (user == null) {
             user = new User();
+            user.setId(1);
             SharedPrefManager.setObject(Constants.USER, user);
         }
     }

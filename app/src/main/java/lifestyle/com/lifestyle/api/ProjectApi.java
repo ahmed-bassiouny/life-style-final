@@ -61,7 +61,8 @@ public interface ProjectApi {
 
     @POST("meals")
     @FormUrlEncoded
-    Call<BaseResponse<BaseList<Meal>>> getMeals(@Field("meal") String meal, @Field("offset") int offset, @Field("limit") int limit);
+    Call<BaseResponse<BaseList<Meal>>> getMeals(@Field("meal") String meal, @Field("calories") String calories,
+                                                @Field("offset") int offset, @Field("limit") int limit);
 
     @POST("page")
     @FormUrlEncoded

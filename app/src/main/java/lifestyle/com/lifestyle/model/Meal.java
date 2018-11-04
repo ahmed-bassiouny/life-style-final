@@ -8,22 +8,22 @@ import lifestyle.com.lifestyle.helper.Utils;
 
 public class Meal {
 
-    @SerializedName("id")
+    @SerializedName("meal_id")
     private int id;
-    @SerializedName("name")
-    private String name;
+    @SerializedName("calories_count")
+    private String caloriesCount;
     @SerializedName("foods")
-    private List<String> foods;
+    private List<Food> foods;
 
     public int getId() {
         return id;
     }
 
-    public String getName() {
-        return Utils.checkString(name);
+    public String getCaloriesCount() {
+        return Utils.checkString(caloriesCount);
     }
 
-    public List<String> getFoods() {
+    public List<Food> getFoods() {
         return foods;
     }
 }

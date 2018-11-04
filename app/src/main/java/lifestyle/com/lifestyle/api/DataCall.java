@@ -142,8 +142,8 @@ public class DataCall extends BaseDataCall implements IUserInteractor, IMealsInt
     }
 
     @Override
-    public void getMeals(String meal, int offset, int limit, final RequestCallback<BaseList<Meal>> callback) {
-        Call<BaseResponse<BaseList<Meal>>> responseCall = RetrofitConfig.httpApiInterface.getMeals(meal, offset, limit);
+    public void getMeals(String meal, String calories, int offset, int limit, final RequestCallback<BaseList<Meal>> callback) {
+        Call<BaseResponse<BaseList<Meal>>> responseCall = RetrofitConfig.httpApiInterface.getMeals(meal, calories, offset, limit);
         responseCall.enqueue(new Callback<BaseResponse<BaseList<Meal>>>() {
             @Override
             public void onResponse(Call<BaseResponse<BaseList<Meal>>> call, Response<BaseResponse<BaseList<Meal>>> response) {
