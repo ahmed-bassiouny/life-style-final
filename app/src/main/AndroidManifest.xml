@@ -16,11 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.HomeActivity"></activity>
-        <activity android:name=".activity.MBICalcActivity">
+        <activity android:name=".activity.HomeActivity" />
+        <activity android:name=".activity.MBICalcActivity"></activity>
+        <activity android:name=".activity.CalcCaloryActivity">
 
         </activity>
-        <activity android:name=".activity.CalcCaloryActivity">
+        <activity android:name=".activity.MealActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
