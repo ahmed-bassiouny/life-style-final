@@ -4,6 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+
+
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 
 import bassiouny.ahmed.genericmanager.SharedPrefManager;
 import lifestyle.com.lifestyle.R;
@@ -17,34 +23,21 @@ import lifestyle.com.lifestyle.model.User;
 public class LoginController extends BaseController {
 
     private IUserInteractor interactor;
-    //private FirebaseAuth mAuth;
-    //private GoogleSignInOptions gso ;
-
 
 
     public LoginController(Activity activity, Fragment fragment) {
         super(activity, fragment);
         interactor = new UserInteractor();
-        initGoogle();
     }
 
-    private void initGoogle(){
-      /*  gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        mAuth = FirebaseAuth.getInstance();*/
-
-    }
-
-    public void login(String email, String password) {
+/*    public void login(String email) {
         if (networkAvailable()) {
             getFragment().startLoading();
-            interactor.login(email, password,callback);
+            interactor.login(email, password, callback);
         } else {
             showAlertConnection();
         }
-    }
+    }*/
 
     private RequestCallback<User> callback = new RequestCallback<User>() {
         @Override
@@ -61,25 +54,17 @@ public class LoginController extends BaseController {
         }
     };
 
- /*   private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+    public void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            //updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithCredential:failure", task.getException());
-                        }
+            // Signed in successfully, show authenticated UI.
+            Log.e("handleSignInResult: ", "handleSignInResult: " );
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.e("handleSignInResult: ", "handleSignInResult: " );
 
-                        // ...
-                    }
-                });
+        }
     }
-*/
 }
