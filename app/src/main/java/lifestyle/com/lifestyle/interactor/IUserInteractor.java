@@ -9,7 +9,9 @@ public interface IUserInteractor {
 
     void register(User user, RequestCallback<User> callback);
     void editProfile(File image, User user, RequestCallback<User> callback);
+    void editProfile(User user, RequestCallback<User> callback);
     void login(String email, String password, RequestCallback<User> callback);
+    void loginSocial(String email, RequestCallback<User> callback);
     void forgetPassword(String email, RequestCallback callback);
     void editPassword(String password,String oldPassword, RequestCallback callback);
     void editWeight(String current,String goal,RequestCallback callback);

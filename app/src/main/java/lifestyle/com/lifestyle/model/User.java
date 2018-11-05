@@ -260,10 +260,10 @@ public class User {
         gender = FEMALE;
     }
     public boolean isMale(){
-       return gender.equals(MALE);
+       return getGender().equals(MALE);
     }
     public boolean isFemale(){
-        return gender.equals(FEMALE);
+        return getGender().equals(FEMALE);
     }
 
     public String getAvatar() {

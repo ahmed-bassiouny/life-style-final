@@ -15,13 +15,5 @@ public class MyApplication extends Application {
         super.onCreate();
         SharedPrefManager.init(this, "life_style");
         RetrofitConfig.initRetrofitConfig();
-
-        // todo i will remove it
-        User user = SharedPrefManager.getObject(Constants.USER, User.class);
-        if (user == null) {
-            user = new User();
-            user.setId(1);
-            SharedPrefManager.setObject(Constants.USER, user);
-        }
     }
 }

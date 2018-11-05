@@ -18,11 +18,11 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.HomeActivity" />
         <activity android:name=".activity.MBICalcActivity" />
-        <activity android:name=".activity.CalcCaloryActivity"></activity>
-        <activity android:name=".activity.MealActivity">
-
-        </activity>
+        <activity android:name=".activity.CalcCaloryActivity" />
+        <activity android:name=".activity.MealActivity"></activity>
         <activity android:name=".activity.AuthActivity">
+        </activity>
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

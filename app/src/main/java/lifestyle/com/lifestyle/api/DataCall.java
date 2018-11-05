@@ -77,8 +77,40 @@ public class DataCall extends BaseDataCall implements IUserInteractor, IMealsInt
     }
 
     @Override
+    public void editProfile(User user, final RequestCallback<User> callback) {
+        Call<BaseResponse<User>> responseCall = RetrofitConfig.httpApiInterface.editProfile(user);
+        responseCall.enqueue(new Callback<BaseResponse<User>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<User>> call, Response<BaseResponse<User>> response) {
+                onDataResponse(response, callback);
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<User>> call, Throwable t) {
+                onDataFailure(t, callback);
+            }
+        });
+    }
+
+    @Override
     public void login(String email, String password, final RequestCallback<User> callback) {
         Call<BaseResponse<User>> responseCall = RetrofitConfig.httpApiInterface.login(email, password);
+        responseCall.enqueue(new Callback<BaseResponse<User>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<User>> call, Response<BaseResponse<User>> response) {
+                onDataResponse(response, callback);
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<User>> call, Throwable t) {
+                onDataFailure(t, callback);
+            }
+        });
+    }
+
+    @Override
+    public void loginSocial(String email, final RequestCallback<User> callback) {
+        Call<BaseResponse<User>> responseCall = RetrofitConfig.httpApiInterface.loginSocial(email);
         responseCall.enqueue(new Callback<BaseResponse<User>>() {
             @Override
             public void onResponse(Call<BaseResponse<User>> call, Response<BaseResponse<User>> response) {

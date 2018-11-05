@@ -13,6 +13,8 @@ import com.google.android.gms.tasks.Task;
 
 import bassiouny.ahmed.genericmanager.SharedPrefManager;
 import lifestyle.com.lifestyle.R;
+import lifestyle.com.lifestyle.activity.CalcCaloryActivity;
+import lifestyle.com.lifestyle.activity.HomeActivity;
 import lifestyle.com.lifestyle.api.RequestCallback;
 import lifestyle.com.lifestyle.base.ui.BaseController;
 import lifestyle.com.lifestyle.helper.Constants;
@@ -30,21 +32,27 @@ public class LoginController extends BaseController {
         interactor = new UserInteractor();
     }
 
-/*    public void login(String email) {
+    public void login(String email) {
         if (networkAvailable()) {
             getFragment().startLoading();
-            interactor.login(email, password, callback);
+            interactor.loginSocial(email, callback);
         } else {
             showAlertConnection();
+            getFragment().endLoading();
         }
-    }*/
+    }
 
     private RequestCallback<User> callback = new RequestCallback<User>() {
         @Override
         public void success(User user) {
             SharedPrefManager.setObject(Constants.USER, user);
-            //launchActivityWithFinish(MainActivity.class);
             getFragment().endLoading();
+            if(user.getBirthday().isEmpty()){
+                // open calc calory
+                launchActivityWithFinish(CalcCaloryActivity.class);
+            }else {
+                launchActivityWithFinish(HomeActivity.class);
+            }
         }
 
         @Override
@@ -57,14 +65,11 @@ public class LoginController extends BaseController {
     public void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            login(account.getEmail());
 
-            // Signed in successfully, show authenticated UI.
-            Log.e("handleSignInResult: ", "handleSignInResult: " );
         } catch (ApiException e) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.e("handleSignInResult: ", "handleSignInResult: " );
-
+            showErrorMessage(e.getMessage());
+            getFragment().endLoading();
         }
     }
 }

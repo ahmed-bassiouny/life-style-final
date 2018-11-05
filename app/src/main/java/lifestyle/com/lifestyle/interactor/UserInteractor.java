@@ -21,12 +21,22 @@ public class UserInteractor implements IUserInteractor {
 
     @Override
     public void editProfile(File image, User user, RequestCallback<User> callback) {
-        interactor.editProfile(image,user, callback);
+        interactor.editProfile(image, user, callback);
+    }
+
+    @Override
+    public void editProfile(User user, RequestCallback<User> callback) {
+        interactor.editProfile(user, callback);
     }
 
     @Override
     public void login(String email, String password, RequestCallback<User> callback) {
         interactor.login(email, password, callback);
+    }
+
+    @Override
+    public void loginSocial(String email, RequestCallback<User> callback) {
+        interactor.loginSocial(email, callback);
     }
 
     @Override
@@ -41,6 +51,6 @@ public class UserInteractor implements IUserInteractor {
 
     @Override
     public void editWeight(String current, String goal, RequestCallback callback) {
-        interactor.editWeight(current,goal,callback);
+        interactor.editWeight(current, goal, callback);
     }
 }

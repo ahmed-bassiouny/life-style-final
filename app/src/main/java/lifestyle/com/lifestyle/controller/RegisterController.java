@@ -6,52 +6,80 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import bassiouny.ahmed.genericmanager.SharedPrefManager;
+import lifestyle.com.lifestyle.R;
+import lifestyle.com.lifestyle.activity.HomeActivity;
 import lifestyle.com.lifestyle.api.RequestCallback;
 import lifestyle.com.lifestyle.base.ui.BaseController;
 import lifestyle.com.lifestyle.helper.Constants;
+import lifestyle.com.lifestyle.helper.Equation;
 import lifestyle.com.lifestyle.interactor.IUserInteractor;
 import lifestyle.com.lifestyle.interactor.UserInteractor;
 import lifestyle.com.lifestyle.model.User;
 
-public class RegisterController extends BaseController{
+public class RegisterController extends BaseController {
     private IUserInteractor interactor;
 
-    public RegisterController(Activity activity, Fragment fragment) {
-        super(activity, fragment);
+    public RegisterController(Activity activity) {
+        super(activity);
         interactor = new UserInteractor();
     }
 
-    public void register(String name,String email,String height,
-                         String weight,String password,boolean isMale){
-        if(networkAvailable()) {
-            getFragment().startLoading();
-            User user = new User();
-            user.setName(name);
-            user.setEmail(email);
-            user.setHeight(height);
-            user.setCurrentWeight(weight);
-            user.setPassword(password);
-            if (isMale)
-                user.setMale();
-            else
-                user.setFemale();
-            interactor.register(user, callback);
-        }else {
+    public void editProfile(User user) {
+        if (networkAvailable()) {
+            getiActivity().startLoading();
+            interactor.editProfile(user, callbackForEdit);
+        } else {
             showAlertConnection();
         }
     }
-    RequestCallback<User> callback = new RequestCallback<User>() {
+
+    public void register(User user) {
+        if (networkAvailable()) {
+            getiActivity().startLoading();
+            interactor.editProfile(user, callbackForRegister);
+        } else {
+            showAlertConnection();
+        }
+    }
+
+    RequestCallback<User> callbackForEdit = new RequestCallback<User>() {
         @Override
         public void success(User user) {
-            SharedPrefManager.setObject(Constants.USER,user);
-            //launchActivityWithFinish(HomeActivity.class);
-            getFragment().endLoading();
+            SharedPrefManager.setObject(Constants.USER, user);
+            SharedPrefManager.setString(Constants.CALORIES, calculateCalory(user));
+            showErrorMessage(getActivity().getString(R.string.saved));
+            getiActivity().endLoading();
+            finishctivity();
         }
 
         @Override
         public void failed(String msg) {
             showMessage(msg);
-            getFragment().endLoading();
+            getiActivity().endLoading();
         }
     };
+
+    RequestCallback<User> callbackForRegister = new RequestCallback<User>() {
+        @Override
+        public void success(User user) {
+            SharedPrefManager.setObject(Constants.USER, user);
+            SharedPrefManager.setString(Constants.CALORIES, calculateCalory(user));
+            showErrorMessage(getActivity().getString(R.string.saved));
+            getiActivity().endLoading();
+            launchActivityWithFinishAndClearStack(HomeActivity.class);
+        }
+
+        @Override
+        public void failed(String msg) {
+            showMessage(msg);
+            getiActivity().endLoading();
+        }
+    };
+
+    private String calculateCalory(User user) {
+        double bmrResut = Equation.calBMR(Integer.parseInt(user.getCurrentWeight()),
+                Integer.parseInt(user.getHeight()), user.getBirthday(), user.isMale());
+        int tee = (int) Equation.getTEE(bmrResut);
+        return String.valueOf(tee);
+    }
 }

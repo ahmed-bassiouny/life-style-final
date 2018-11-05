@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.ycuwq.datepicker.date.DatePickerDialogFragment;
 
@@ -24,6 +26,7 @@ import lifestyle.com.lifestyle.adapter.IClickAdapter;
 import lifestyle.com.lifestyle.adapter.WeightAdapter;
 import lifestyle.com.lifestyle.base.ui.BaseActivity;
 import lifestyle.com.lifestyle.controller.MBICalcController;
+import lifestyle.com.lifestyle.controller.RegisterController;
 import lifestyle.com.lifestyle.custome_views.MyDatePickerDialogFragment;
 import lifestyle.com.lifestyle.fragments.WorkTypeListDialogFragment;
 import lifestyle.com.lifestyle.helper.Constants;
@@ -49,9 +52,12 @@ public class CalcCaloryActivity extends BaseActivity {
     ImageView ivFemale;
     @BindView(R.id.btn_calc)
     Button btnCalc;
+    @BindView(R.id.pbProgress)
+    ProgressBar progressBar;
 
 
     private MBICalcController controller;
+    private RegisterController registerController;
     private int weight = 0;
     private int height = 0;
     private boolean isMale = true;
@@ -59,6 +65,7 @@ public class CalcCaloryActivity extends BaseActivity {
     private int workTypeKey = 0;
     private HeightAdapter heightAdapter;
     private WeightAdapter weightAdapter;
+    private boolean registerScreen = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +75,7 @@ public class CalcCaloryActivity extends BaseActivity {
         initToolbar(getString(R.string.calc_calory));
         ButterKnife.bind(this);
         controller = new MBICalcController(this);
+        registerController = new RegisterController(this);
         recyclerHeight.setLayoutManager(new LinearLayoutManager(this));
         heightAdapter = new HeightAdapter(this, controller.getHeight(), selectHeight);
         recyclerHeight.setAdapter(heightAdapter);
@@ -75,12 +83,14 @@ public class CalcCaloryActivity extends BaseActivity {
         recyclerWeight.setLayoutManager(new LinearLayoutManager(this));
         weightAdapter = new WeightAdapter(this, controller.getWeight(), selectWeight);
         recyclerWeight.setAdapter(weightAdapter);
-
-        setDataUI();
+        User user = SharedPrefManager.getObject(Constants.USER, User.class);
+        if (!user.getBirthday().isEmpty()) {
+            setDataUI(user);
+            registerScreen = false;
+        }
     }
 
-    private void setDataUI() {
-        User user = SharedPrefManager.getObject(Constants.USER, User.class);
+    private void setDataUI(User user) {
         etBirthday.setText(user.getBirthday());
         if (user.isFemale()) {
             setFemale();
@@ -194,11 +204,11 @@ public class CalcCaloryActivity extends BaseActivity {
             controller.showErrorMessage(getString(R.string.goals_required));
         } else {
             saveData();
-            if (btnCalc.getText().toString().equals(getString(R.string.save))) {
+           /* if (btnCalc.getText().toString().equals(getString(R.string.save))) {
                 //controller.launchActivityWithFinish(HomeActivity.class);
             } else {
                 // todo show calory page result
-            }
+            }*/
         }
     }
 
@@ -214,23 +224,22 @@ public class CalcCaloryActivity extends BaseActivity {
         }
         user.setWorkType(String.valueOf(workTypeKey));
         user.setPurpose(String.valueOf(goalKey));
-        SharedPrefManager.setObject(Constants.USER, user);
-        SharedPrefManager.setString(Constants.CALORIES, calculateCalory());
+        if (registerScreen)
+            registerController.register(user);
+        else
+            registerController.editProfile(user);
     }
 
-    private String calculateCalory() {
-        double bmrResut = Equation.calBMR(weight, height, etBirthday.getText().toString(), isMale);
-        int tee = (int) Equation.getTEE(bmrResut);
-        return String.valueOf(tee);
-    }
 
     @Override
     public void startLoading() {
-
+        btnCalc.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void endLoading() {
-
+        btnCalc.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.GONE);
     }
 }

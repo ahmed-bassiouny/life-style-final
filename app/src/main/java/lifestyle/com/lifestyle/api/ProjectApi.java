@@ -28,11 +28,15 @@ public interface ProjectApi {
     @FormUrlEncoded
     Call<BaseResponse<User>> login(@Field("email") String email, @Field("password") String password);
 
+    @POST("login_with_social")
+    @FormUrlEncoded
+    Call<BaseResponse<User>> loginSocial(@Field("email") String email);
+
     @POST("forget_password")
     @FormUrlEncoded
     Call<BaseResponse> forgetPassword(@Field("email") String email);
 
-    @POST("profile/edit")
+    @POST("registration_after_login_with_social")
     Call<BaseResponse<User>> editProfile(@Body User user);
 
     @POST("profile/edit")
