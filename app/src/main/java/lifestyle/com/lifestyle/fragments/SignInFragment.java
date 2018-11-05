@@ -21,6 +21,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import lifestyle.com.lifestyle.R;
 import lifestyle.com.lifestyle.base.ui.BaseFragment;
 import lifestyle.com.lifestyle.controller.LoginController;
@@ -52,13 +53,12 @@ public class SignInFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
         controller = new LoginController(getMyActivity(), this);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                signIn();
-            }
-        },2000);
 
+    }
+
+    @OnClick({R.id.iv_gmail, R.id.iv_facebook})
+    public void signInWithGoogle() {
+        signIn();
     }
 
     private void signIn() {

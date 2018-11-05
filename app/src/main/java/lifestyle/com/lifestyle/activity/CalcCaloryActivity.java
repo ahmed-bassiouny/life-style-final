@@ -204,11 +204,6 @@ public class CalcCaloryActivity extends BaseActivity {
             controller.showErrorMessage(getString(R.string.goals_required));
         } else {
             saveData();
-           /* if (btnCalc.getText().toString().equals(getString(R.string.save))) {
-                //controller.launchActivityWithFinish(HomeActivity.class);
-            } else {
-                // todo show calory page result
-            }*/
         }
     }
 
