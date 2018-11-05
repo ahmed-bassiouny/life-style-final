@@ -10,6 +10,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.auth.api.Auth;
 
@@ -20,6 +22,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lifestyle.com.lifestyle.R;
@@ -30,6 +33,11 @@ import lifestyle.com.lifestyle.controller.LoginController;
  * A simple {@link Fragment} subclass.
  */
 public class SignInFragment extends BaseFragment {
+
+    @BindView(R.id.pbProgress)
+    ProgressBar pbProgress;
+    @BindView(R.id.linear)
+    LinearLayout linear;
 
     private int RC_SIGN_IN = 123;
 
@@ -62,6 +70,7 @@ public class SignInFragment extends BaseFragment {
     }
 
     private void signIn() {
+        startLoading();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -87,11 +96,13 @@ public class SignInFragment extends BaseFragment {
 
     @Override
     public void startLoading() {
-
+        pbProgress.setVisibility(View.VISIBLE);
+        linear.setVisibility(View.GONE);
     }
 
     @Override
     public void endLoading() {
-
+        pbProgress.setVisibility(View.GONE);
+        linear.setVisibility(View.VISIBLE);
     }
 }
