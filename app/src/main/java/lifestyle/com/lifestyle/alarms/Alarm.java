@@ -86,7 +86,7 @@ public class Alarm {
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, PendingIntent.getBroadcast(context, 3, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
     }
 
-    private static void cancelPendindIntentForWater(Context context) {
+    public static void cancelPendindIntentForWater(Context context) {
         Intent intentAlarm = new Intent(context, MyReceiverForWater.class);
         PendingIntent.getBroadcast(context, 1, intentAlarm,
                 PendingIntent.FLAG_UPDATE_CURRENT).cancel();

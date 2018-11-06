@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import lifestyle.com.lifestyle.R;
 import lifestyle.com.lifestyle.base.ui.BaseActivity;
+import lifestyle.com.lifestyle.helper.DefaultValue;
 
 public class HomeActivity extends BaseActivity {
 
@@ -13,6 +14,8 @@ public class HomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         hideStatusBar();
         setContentView(R.layout.activity_home);
+        // set default value
+        DefaultValue.waterAlarm(this);
     }
 
     @Override
