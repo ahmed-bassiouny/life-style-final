@@ -4,150 +4,263 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:orientation="vertical"
     tools:context=".activity.HomeActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="@string/main"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/background_gradiant_main"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tv_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/today"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="5dp">
+
+            <lifestyle.com.lifestyle.custome_views.CircleProgressBar
+                android:id="@+id/custom_progressBar"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_margin="10dp"
+                app:progress="100"
+                app:progressBarThickness="8dp"
+                app:progressbarColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_cal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/white" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_today"
+            android:layout_marginTop="5dp"
+            android:layout_toStartOf="@+id/frame"
+            android:text="@string/main_hint"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="20dp">
+        android:layout_marginTop="10dp"
+        android:weightSum="3">
 
+        <ImageView
+            android:id="@+id/iv_food"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/food_icon" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@drawable/bg_small"
-            android:elevation="32dp">
+        <ImageView
+            android:id="@+id/iv_water"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/water_icon" />
 
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start|center_vertical"
-                android:layout_marginStart="10dp"
-                android:text="احمد بسيونى"
-                android:textColor="@color/white"
-                android:textSize="28sp" />
-        </FrameLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:weightSum="3">
-
-
-            <ImageView
-                android:id="@+id/iv_water"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/fill_light_blue"
-                android:padding="25dp"
-                android:src="@drawable/water" />
-
-
-            <ImageView
-                android:id="@+id/iv_food"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/fill_yellow"
-                android:padding="25dp"
-                android:src="@drawable/food" />
-
-            <ImageView
-                android:id="@+id/iv_sleep"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/fill_light_green"
-                android:padding="25dp"
-                android:src="@drawable/sleep" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:weightSum="3">
-
-
-            <ImageView
-                android:id="@+id/iv_bmi"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/fill_dark_red"
-                android:gravity="center"
-                android:padding="25dp"
-                android:src="@drawable/bmi" />
-
-            <ImageView
-                android:id="@+id/iv_walk"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_marginStart="20dp"
-                android:layout_weight="2"
-                android:background="@drawable/fill_dark_green"
-                android:padding="25dp"
-                android:src="@drawable/walk" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:weightSum="3">
-
-
-            <ImageView
-                android:id="@+id/iv_profile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/fill_purple"
-                android:padding="25dp"
-                android:src="@drawable/profile" />
-
-
-            <ImageView
-                android:id="@+id/iv_about"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/fill_dark_blue"
-                android:padding="15dp"
-                android:src="@drawable/about" />
-
-
-            <ImageView
-                android:id="@+id/iv_logout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/fill_dark_gray"
-                android:padding="28dp"
-                android:src="@drawable/logout" />
-
-        </LinearLayout>
-
+        <ImageView
+            android:id="@+id/iv_bmi"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/bmi_icon" />
     </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:weightSum="3">
+
+        <ImageView
+            android:id="@+id/iv_about"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/about_icon" />
+
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/profile_icon" />
+
+        <ImageView
+            android:id="@+id/iv_logout"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/logout_icon" />
+    </LinearLayout>
+    <!-- <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         android:layout_marginBottom="20dp">
+
+
+         <FrameLayout
+             android:layout_width="match_parent"
+             android:layout_height="200dp"
+             android:background="@drawable/bg_small"
+             android:elevation="32dp">
+
+             <TextView
+                 android:id="@+id/tv_name"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="start|center_vertical"
+                 android:layout_marginStart="10dp"
+                 android:text="احمد بسيونى"
+                 android:textColor="@color/white"
+                 android:textSize="28sp" />
+         </FrameLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginEnd="10dp"
+             android:layout_marginStart="10dp"
+             android:layout_marginTop="5dp"
+             android:weightSum="3">
+
+
+             <ImageView
+                 android:id="@+id/iv_water"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/fill_light_blue"
+                 android:padding="25dp"
+                 android:src="@drawable/water" />
+
+
+             <ImageView
+                 android:id="@+id/iv_food"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/fill_yellow"
+                 android:padding="25dp"
+                 android:src="@drawable/food" />
+
+             <ImageView
+                 android:id="@+id/iv_sleep"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/fill_light_green"
+                 android:padding="25dp"
+                 android:src="@drawable/sleep" />
+
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginEnd="10dp"
+             android:layout_marginStart="10dp"
+             android:layout_marginTop="5dp"
+             android:weightSum="3">
+
+
+             <ImageView
+                 android:id="@+id/iv_bmi"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_gravity="center"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/fill_dark_red"
+                 android:gravity="center"
+                 android:padding="25dp"
+                 android:src="@drawable/bmi" />
+
+             <ImageView
+                 android:id="@+id/iv_walk"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_margin="5dp"
+                 android:layout_marginStart="20dp"
+                 android:layout_weight="2"
+                 android:background="@drawable/fill_dark_green"
+                 android:padding="25dp"
+                 android:src="@drawable/walk" />
+         </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginEnd="10dp"
+             android:layout_marginStart="10dp"
+             android:layout_marginTop="5dp"
+             android:weightSum="3">
+
+
+             <ImageView
+                 android:id="@+id/iv_profile"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/fill_purple"
+                 android:padding="25dp"
+                 android:src="@drawable/profile" />
+
+
+             <ImageView
+                 android:id="@+id/iv_about"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/fill_dark_blue"
+                 android:padding="15dp"
+                 android:src="@drawable/about" />
+
+
+             <ImageView
+                 android:id="@+id/iv_logout"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_margin="5dp"
+                 android:layout_weight="1"
+                 android:background="@drawable/fill_dark_gray"
+                 android:padding="28dp"
+                 android:src="@drawable/logout" />
+
+         </LinearLayout>
+
+     </LinearLayout>-->
 </LinearLayout>
