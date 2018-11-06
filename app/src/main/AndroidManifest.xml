@@ -19,10 +19,12 @@
         <activity android:name=".activity.HomeActivity" />
         <activity android:name=".activity.MBICalcActivity" />
         <activity android:name=".activity.CalcCaloryActivity" />
-        <activity android:name=".activity.MealActivity"></activity>
-        <activity android:name=".activity.AuthActivity">
-        </activity>
+        <activity android:name=".activity.MealActivity" />
+        <activity android:name=".activity.AuthActivity"></activity>
         <activity android:name=".activity.SplashActivity">
+
+        </activity>
+        <activity android:name=".activity.WaterSettingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

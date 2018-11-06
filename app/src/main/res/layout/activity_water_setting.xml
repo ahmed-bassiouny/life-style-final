@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_gradiant"
+    tools:context=".activity.WaterSettingActivity">
+
+
+    <include layout="@layout/toolbar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textSize="22sp"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:text="@string/alarm_time" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:id="@+id/linear_6"
+            android:background="@drawable/fill_white"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:id="@+id/tv_60"
+                android:textColor="@color/light_black"
+                android:textSize="28sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/minute"
+                android:id="@+id/tv_60_m"
+                android:textColor="@color/light_black"
+                android:layout_gravity="end"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:id="@+id/linear_12"
+            android:background="@drawable/fill_white"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="120"
+                android:id="@+id/tv_120"
+                android:layout_gravity="center"
+                android:textColor="@color/light_black"
+                android:textStyle="bold"
+                android:textSize="28sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/minute"
+                android:textColor="@color/light_black"
+                android:id="@+id/tv_120_m"
+                android:layout_gravity="end"
+                android:textSize="16sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:weightSum="2"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:id="@+id/linear_18"
+            android:background="@drawable/fill_white"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="180"
+                android:textStyle="bold"
+                android:textColor="@color/light_black"
+                android:layout_gravity="center"
+                android:id="@+id/tv_180"
+                android:textSize="28sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/minute"
+                android:textColor="@color/light_black"
+                android:id="@+id/tv_180_m"
+                android:layout_gravity="end"
+                android:textSize="16sp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:id="@+id/linear_twice"
+            android:background="@drawable/fill_white"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/twice"
+                android:layout_gravity="center"
+                android:id="@+id/tv_twice"
+                android:textColor="@color/light_black"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/per_day"
+                android:layout_gravity="end"
+                android:id="@+id/tv_twice_m"
+                android:textColor="@color/light_black"
+                android:textSize="16sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_margin="5dp"
+        android:id="@+id/linear_cancel"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/fill_white"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/cancel_notification"
+            android:layout_gravity="center"
+            android:textColor="@color/light_black"
+            android:id="@+id/tv_cancel"
+            android:gravity="center"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fill_light_blue"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btn_save"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/save"/>
+</LinearLayout>

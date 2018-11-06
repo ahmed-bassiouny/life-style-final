@@ -14,5 +14,6 @@
     <color name="light_green">#cce44d</color>
     <color name="yellow">#eec131</color>
     <color name="dark_gray">#aaaaaa</color>
+    <color name="light_black">#545454</color>
     <color name="purple">#9863e6</color>
 </resources>

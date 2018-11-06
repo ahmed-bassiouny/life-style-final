@@ -19,4 +19,5 @@ public interface Constants {
     int MIN_HEIGHT = 140;
     int MIN_AGE = 10;
     String CALORIES = "calories";
+    String WATER_ALARM_TYPE = "water_alarm_type";
 }

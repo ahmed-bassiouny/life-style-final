@@ -136,4 +136,10 @@
     <string name="count">الكمية</string>
     <string name="calory_hint">هذه الوجبه تحتوى على</string>
     <string name="saved">تم الحفظ</string>
+    <string name="alarm_time">اختر مواعيد التنبية</string>
+    <string name="minute">دقيقة</string>
+    <string name="per_day">يوميا</string>
+    <string name="twice">مرتين</string>
+    <string name="water_program">النظام المائى</string>
+    <string name="cancel_notification">الغاء الاشعارات</string>
 </resources>
