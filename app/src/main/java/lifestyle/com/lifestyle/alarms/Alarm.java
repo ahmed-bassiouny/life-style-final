@@ -17,23 +17,54 @@ import lifestyle.com.lifestyle.broadcast.MyReceiverForMeal;
 import lifestyle.com.lifestyle.broadcast.MyReceiverForWater;
 import lifestyle.com.lifestyle.helper.Constants;
 import lifestyle.com.lifestyle.model.User;
+import lifestyle.com.lifestyle.model.WaterAlarmType;
 
 public class Alarm {
 
-    public static void setAlarmForWater4h(Context context) {
+
+    public static void setAlarmForWater(Context context) {
+        cancelPendindIntentForWater(context);
+        WaterAlarmType type = SharedPrefManager.getObject(Constants.WATER_ALARM_TYPE, WaterAlarmType.class);
+        switch (type) {
+            case TYPE6:
+                setAlarmForWaterAfterTime(context, 1);
+                break;
+            case TYPE12:
+                setAlarmForWaterAfterTime(context, 2);
+                break;
+            case TYPE18:
+                setAlarmForWaterAfterTime(context, 3);
+                break;
+            case TWICE:
+                setAlarmForWater2PM(context);
+                setAlarmForWater8PM(context);
+                break;
+
+        }
+    }
+
+    private static void setAlarmForWaterAfterTime(Context context, int time) {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 16);
+        // handle next day case
+        // if hour = 23
+        //get day and increase by one
+        if (calendar.get(Calendar.HOUR_OF_DAY) == 23)
+            calendar.set(Calendar.DAY_OF_MONTH, (calendar.get(Calendar.DAY_OF_MONTH) + 1));
+        calendar.set(Calendar.HOUR_OF_DAY, (calendar.get(Calendar.HOUR_OF_DAY) + time));
+
         Intent intentAlarm = new Intent(context, MyReceiverForWater.class);
         // create the object
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         //set the alarm for particular time
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, PendingIntent.getBroadcast(context, 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), (time * AlarmManager.INTERVAL_HOUR), PendingIntent.getBroadcast(context, 1, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
     }
 
-    public static void setAlarmForWater8h(Context context) {
+    private static void setAlarmForWater2PM(Context context) {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 20);
+        if (calendar.get(Calendar.HOUR_OF_DAY) >= 14)
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+        calendar.set(Calendar.HOUR_OF_DAY, 14);
         Intent intentAlarm = new Intent(context, MyReceiverForWater.class);
         // create the object
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
@@ -42,7 +73,30 @@ public class Alarm {
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, PendingIntent.getBroadcast(context, 2, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
     }
 
-    public static void setAlarmForMeal(Context context) {
+    private static void setAlarmForWater8PM(Context context) {
+        Calendar calendar = Calendar.getInstance();
+        if (calendar.get(Calendar.HOUR_OF_DAY) >= 20)
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+        calendar.set(Calendar.HOUR_OF_DAY, 20);
+        Intent intentAlarm = new Intent(context, MyReceiverForWater.class);
+        // create the object
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        //set the alarm for particular time
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, PendingIntent.getBroadcast(context, 3, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+    }
+
+    private static void cancelPendindIntentForWater(Context context) {
+        Intent intentAlarm = new Intent(context, MyReceiverForWater.class);
+        PendingIntent.getBroadcast(context, 1, intentAlarm,
+                PendingIntent.FLAG_UPDATE_CURRENT).cancel();
+        PendingIntent.getBroadcast(context, 2, intentAlarm,
+                PendingIntent.FLAG_UPDATE_CURRENT).cancel();
+        PendingIntent.getBroadcast(context, 3, intentAlarm,
+                PendingIntent.FLAG_UPDATE_CURRENT).cancel();
+    }
+
+    private static void setAlarmForMeal(Context context) {
         User user = SharedPrefManager.getObject(Constants.USER, User.class);
         Date wakeUpTime;
         if (user.getWakesUpAt().isEmpty()) {

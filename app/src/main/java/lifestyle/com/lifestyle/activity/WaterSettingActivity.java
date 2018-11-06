@@ -11,6 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lifestyle.com.lifestyle.R;
+import lifestyle.com.lifestyle.alarms.Alarm;
 import lifestyle.com.lifestyle.base.ui.BaseActivity;
 import lifestyle.com.lifestyle.helper.Constants;
 import lifestyle.com.lifestyle.model.WaterAlarmType;
@@ -90,6 +91,7 @@ public class WaterSettingActivity extends BaseActivity {
     @OnClick(R.id.btn_save)
     public void save() {
         SharedPrefManager.setObject(Constants.WATER_ALARM_TYPE, type);
+        Alarm.setAlarmForWater(this);
         onBackPressed();
     }
 
