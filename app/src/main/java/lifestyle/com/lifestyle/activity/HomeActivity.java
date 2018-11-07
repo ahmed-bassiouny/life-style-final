@@ -18,6 +18,7 @@ import bassiouny.ahmed.genericmanager.SharedPrefManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import lifestyle.com.lifestyle.R;
+import lifestyle.com.lifestyle.alarms.Alarm;
 import lifestyle.com.lifestyle.base.ui.BaseActivity;
 import lifestyle.com.lifestyle.helper.Constants;
 import lifestyle.com.lifestyle.helper.DefaultValue;
@@ -110,6 +111,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                                 GoogleSignIn.getClient(HomeActivity.this, gso).signOut();
                                 SharedPrefManager.clearSharedPref();
                                 startActivity(new Intent(HomeActivity.this, AuthActivity.class));
+                                Alarm.cancelPendindIntentForWater(HomeActivity.this);
                                 finish();
                             }
                         })

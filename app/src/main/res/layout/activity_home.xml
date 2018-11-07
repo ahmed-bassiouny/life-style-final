@@ -73,66 +73,106 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:weightSum="3">
 
-        <ImageView
-            android:id="@+id/iv_food"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:background="@color/white"
-            android:layout_weight="1"
-            android:src="@drawable/food_icon" />
 
         <ImageView
-            android:id="@+id/iv_water"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="5dp"
-            android:src="@drawable/water_icon" />
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="2"
+            android:src="@drawable/chara" />
 
-        <ImageView
-            android:id="@+id/iv_bmi"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:padding="5dp"
-            android:src="@drawable/bmi_icon" />
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="2">
+
+                <ImageView
+                    android:id="@+id/iv_food"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:src="@drawable/food_icon" />
+
+                <ImageView
+                    android:id="@+id/iv_water"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:src="@drawable/water_icon" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="2">
+
+                <ImageView
+                    android:id="@+id/iv_bmi"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:src="@drawable/bmi_icon" />
+
+                <ImageView
+                    android:id="@+id/iv_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/profile_icon" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="2">
+
+                <ImageView
+                    android:id="@+id/iv_about"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+
+                    android:src="@drawable/about_icon" />
+
+
+                <ImageView
+                    android:id="@+id/iv_logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="1dp"
+                    android:src="@drawable/logout_icon" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:weightSum="3">
+</LinearLayout>
 
-        <ImageView
-            android:id="@+id/iv_about"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="120dp"
 
-            android:src="@drawable/about_icon" />
-
-        <ImageView
-            android:id="@+id/iv_profile"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="120dp"
-            android:src="@drawable/profile_icon" />
-
-        <ImageView
-            android:id="@+id/iv_logout"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:padding="1dp"
-            android:layout_height="120dp"
-            android:src="@drawable/logout_icon" />
-    </LinearLayout>
     <!-- <LinearLayout
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
@@ -276,4 +316,3 @@
          </LinearLayout>
 
      </LinearLayout>-->
-</LinearLayout>
