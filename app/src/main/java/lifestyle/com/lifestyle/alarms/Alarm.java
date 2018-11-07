@@ -39,6 +39,9 @@ public class Alarm {
                 setAlarmForWater2PM(context);
                 setAlarmForWater8PM(context);
                 break;
+            case CANCEL:
+                cancelPendindIntentForWater(context);
+                break;
 
         }
     }

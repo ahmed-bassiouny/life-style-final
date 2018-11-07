@@ -18,6 +18,7 @@ import lifestyle.com.lifestyle.activity.HomeActivity;
 import lifestyle.com.lifestyle.api.RequestCallback;
 import lifestyle.com.lifestyle.base.ui.BaseController;
 import lifestyle.com.lifestyle.helper.Constants;
+import lifestyle.com.lifestyle.helper.Equation;
 import lifestyle.com.lifestyle.interactor.IUserInteractor;
 import lifestyle.com.lifestyle.interactor.UserInteractor;
 import lifestyle.com.lifestyle.model.User;
@@ -51,6 +52,7 @@ public class LoginController extends BaseController {
                 // open calc calory
                 launchActivityWithFinish(CalcCaloryActivity.class);
             }else {
+                SharedPrefManager.setString(Constants.CALORIES, calculateCalory(user));
                 launchActivityWithFinish(HomeActivity.class);
             }
         }
@@ -71,5 +73,12 @@ public class LoginController extends BaseController {
             showErrorMessage(e.getMessage());
             getFragment().endLoading();
         }
+    }
+
+    private String calculateCalory(User user) {
+        double bmrResut = Equation.calBMR(Integer.parseInt(user.getCurrentWeight()),
+                Integer.parseInt(user.getHeight()), user.getBirthday(), user.isMale());
+        int tee = (int) Equation.getTEE(bmrResut);
+        return String.valueOf(tee);
     }
 }

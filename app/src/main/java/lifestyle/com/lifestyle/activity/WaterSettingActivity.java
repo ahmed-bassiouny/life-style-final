@@ -59,6 +59,7 @@ public class WaterSettingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        hideStatusBar();
         setContentView(R.layout.activity_water_setting);
         initToolbar(getString(R.string.water_program));
         ButterKnife.bind(this);

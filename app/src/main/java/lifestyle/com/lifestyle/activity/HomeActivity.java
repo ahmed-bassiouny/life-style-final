@@ -1,5 +1,6 @@
 package lifestyle.com.lifestyle.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import bassiouny.ahmed.genericmanager.SharedPrefManager;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import lifestyle.com.lifestyle.R;
 import lifestyle.com.lifestyle.base.ui.BaseActivity;
 import lifestyle.com.lifestyle.helper.Constants;
@@ -35,15 +37,16 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         hideStatusBar();
         setContentView(R.layout.activity_home);
+        ButterKnife.bind(this);
         // set default value
         DefaultValue.waterAlarm(this);
-        tvCal.setText(SharedPrefManager.getString(Constants.CALORIES) + " cal");
+        tvCal.setText(" CAL " +SharedPrefManager.getString(Constants.CALORIES));
         ivFood.setOnClickListener(this);
         ivWater.setOnClickListener(this);
         ivBmi.setOnClickListener(this);
         ivAbout.setOnClickListener(this);
         ivProfile.setOnClickListener(this);
-        ivProfile.setOnClickListener(this);
+        ivLogout.setOnClickListener(this);
 
     }
 
@@ -59,9 +62,27 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        Intent intent = null;
+        switch (view.getId()) {
             case R.id.iv_food:
-
+                intent = new Intent(this, MealActivity.class);
+                break;
+            case R.id.iv_water:
+                intent = new Intent(this, WaterSettingActivity.class);
+                break;
+            case R.id.iv_bmi:
+                intent = new Intent(this, MBICalcActivity.class);
+                break;
+            case R.id.iv_about:
+                //intent = new Intent(this,MBICalcActivity.class);
+                break;
+            case R.id.iv_profile:
+                intent = new Intent(this, CalcCaloryActivity.class);
+                break;
+            case R.id.iv_logout:
+                break;
         }
+        if (intent != null)
+            startActivity(intent);
     }
 }

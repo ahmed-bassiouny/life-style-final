@@ -22,14 +22,13 @@
         <activity android:name=".activity.MealActivity" />
         <activity android:name=".activity.AuthActivity"></activity>
         <activity android:name=".activity.SplashActivity">
-
-        </activity>
-        <activity android:name=".activity.WaterSettingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".activity.WaterSettingActivity">
         </activity>
         <receiver android:name=".broadcast.MyReceiverForWater">
             <intent-filter>
