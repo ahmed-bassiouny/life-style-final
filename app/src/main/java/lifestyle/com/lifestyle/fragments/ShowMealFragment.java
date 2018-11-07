@@ -82,7 +82,7 @@ public class ShowMealFragment extends BaseFragment implements BaseController.IRe
         Animation RightSwipe = AnimationUtils.loadAnimation(mContext, R.anim.left_swipe);
         recycler.startAnimation(RightSwipe);
         currentMeal++;
-        if (currentMeal > meals.size()) {
+        if (currentMeal >= meals.size()) {
             currentMeal = 0;
         }
         setFoodList();
@@ -112,9 +112,8 @@ public class ShowMealFragment extends BaseFragment implements BaseController.IRe
     }
 
     private void setFoodList() {
-        if (meals.get(currentMeal) != null) {
-            adapter.setList(meals.get(currentMeal).getFoods());
-            tvHint.setText(String.format(Locale.getDefault(), " %s %s ", meals.get(currentMeal).getCaloriesCount(), getString(R.string.calory)));
-        }
+        adapter.setList(meals.get(currentMeal).getFoods());
+        tvHint.setText(String.format(Locale.getDefault(), " %s %s ", meals.get(currentMeal).getCaloriesCount(), getString(R.string.calory)));
+
     }
 }

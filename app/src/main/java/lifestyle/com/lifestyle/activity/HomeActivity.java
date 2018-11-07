@@ -1,11 +1,18 @@
 package lifestyle.com.lifestyle.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
 import bassiouny.ahmed.genericmanager.SharedPrefManager;
 import butterknife.BindView;
@@ -40,14 +47,19 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         ButterKnife.bind(this);
         // set default value
         DefaultValue.waterAlarm(this);
-        tvCal.setText(" CAL " +SharedPrefManager.getString(Constants.CALORIES));
         ivFood.setOnClickListener(this);
         ivWater.setOnClickListener(this);
         ivBmi.setOnClickListener(this);
         ivAbout.setOnClickListener(this);
         ivProfile.setOnClickListener(this);
         ivLogout.setOnClickListener(this);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // set it here to update value
+        tvCal.setText(SharedPrefManager.getString(Constants.CALORIES) + " CAL ");
     }
 
     @Override
@@ -74,12 +86,40 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                 intent = new Intent(this, MBICalcActivity.class);
                 break;
             case R.id.iv_about:
-                //intent = new Intent(this,MBICalcActivity.class);
+                Toast.makeText(this, "not available now", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.iv_profile:
                 intent = new Intent(this, CalcCaloryActivity.class);
                 break;
             case R.id.iv_logout:
+
+                AlertDialog.Builder builder;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
+                } else {
+                    builder = new AlertDialog.Builder(this);
+                }
+                builder
+                        .setMessage("هل تريد تسجيل الخروج")
+                        .setPositiveButton("تاكيد", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                                        .requestEmail()
+                                        .build();
+                                GoogleSignIn.getClient(HomeActivity.this, gso).signOut();
+                                SharedPrefManager.clearSharedPref();
+                                startActivity(new Intent(HomeActivity.this, AuthActivity.class));
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
                 break;
         }
         if (intent != null)
