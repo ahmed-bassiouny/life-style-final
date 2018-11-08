@@ -43,6 +43,8 @@ public class ShowMealFragment extends BaseFragment implements BaseController.IRe
     LinearLayout linearHint;
     @BindView(R.id.tv_hint)
     TextView tvHint;
+    @BindView(R.id.tv_hint_name)
+    TextView tvHintN;
 
     private FoodAdapter adapter;
     private String mealType = "";
@@ -112,6 +114,12 @@ public class ShowMealFragment extends BaseFragment implements BaseController.IRe
     }
 
     private void setFoodList() {
+        if (meals.size() == 0){
+            controller.showMessage("ﻻ يوجد وجبات");
+            tvHintN.setVisibility(View.GONE);
+            tvHint.setVisibility(View.GONE);
+            return;
+        }
         adapter.setList(meals.get(currentMeal).getFoods());
         tvHint.setText(String.format(Locale.getDefault(), " %s %s ", meals.get(currentMeal).getCaloriesCount(), getString(R.string.calory)));
 
