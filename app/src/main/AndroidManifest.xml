@@ -20,7 +20,7 @@
         <activity android:name=".activity.MBICalcActivity" />
         <activity android:name=".activity.CalcCaloryActivity" />
         <activity android:name=".activity.MealActivity" />
-        <activity android:name=".activity.AuthActivity"></activity>
+        <activity android:name=".activity.AuthActivity" />
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,8 +28,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.WaterSettingActivity">
-        </activity>
+        <activity android:name=".activity.WaterSettingActivity"></activity>
+
         <receiver android:name=".broadcast.MyReceiverForWater">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -40,6 +40,8 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".activity.CreateMealActivity"></activity>
     </application>
 
 </manifest>

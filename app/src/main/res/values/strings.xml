@@ -52,6 +52,11 @@
         <item></item>
         <item></item>
     </array>
+    <array name="meals_type">
+        <item>وجبة الإفطار</item>
+        <item>وجبة الغداء</item>
+        <item>وجبة العشاء</item>
+    </array>
     <array name="goal">
         <item>خسارة الوزن</item>
         <item>محافظة على الوزن</item>
@@ -145,4 +150,10 @@
     <string name="main">الرئيسية</string>
     <string name="today">اليوم</string>
     <string name="main_hint">السعر الحراري أو الكالوري هو وحدة من الوحدات المستخدمة لقياس الطاقة الحرارية التي يحتاجها جسم الإنسان للقيام بالوظائف الأساسية، حيث تحتوي الكربوهيدرات على 400 سعر حراري لكلّ 100 غرام، وتنتج المواد الدهنية ما يقارب 900 سعر حراري لكلّ 100 غرام، بينما تنتج المواد البروتينية 400 سعر حراري لكلّ 100 غرام.</string>
+    <string name="protein">بروتين</string>
+    <string name="starches">النشويات</string>
+    <string name="vegetables">الخضراوات</string>
+    <string name="fruits">الفواكهه</string>
+    <string name="milks">الالبان</string>
+    <string name="save_meal">حفظ الوجبة</string>
 </resources>

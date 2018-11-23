@@ -1,6 +1,7 @@
 package lifestyle.com.lifestyle.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,6 +14,7 @@ import bassiouny.ahmed.genericmanager.MyFragmentTransaction;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lifestyle.com.lifestyle.R;
+import lifestyle.com.lifestyle.activity.CreateMealActivity;
 import lifestyle.com.lifestyle.base.ui.BaseFragment;
 
 /**
@@ -36,7 +38,7 @@ public class SelectMealTypeFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
     }
 
     @Override
@@ -56,5 +58,10 @@ public class SelectMealTypeFragment extends BaseFragment {
         ShowMealFragment fragment = new ShowMealFragment();
         fragment.setArguments(bundle);
         MyFragmentTransaction.open(getMyActivity(), fragment, R.id.main_frame, "tag");
+    }
+
+    @OnClick(R.id.btn_create_meal)
+    public void createMeal() {
+        startActivity(new Intent(mContext, CreateMealActivity.class));
     }
 }
