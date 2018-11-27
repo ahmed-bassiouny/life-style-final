@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "706940534467",
+    "firebase_url": "https://life-style-221523.firebaseio.com",
+    "project_id": "life-style-221523",
+    "storage_bucket": "life-style-221523.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706940534467:android:49537e670db689b8",
+        "android_client_info": {
+          "package_name": "lifestyle.com.lifestyle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706940534467-vu0ebfhctafg54cggtjb39u6vgo1mjub.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lifestyle.com.lifestyle",
+            "certificate_hash": "7ffe881a590d984413e2fed8d617eb8dc7db37ef"
+          }
+        },
+        {
+          "client_id": "706940534467-6jrv8qm288sem63mo72svhapgcst22md.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoWggE_KBIKb-7T820qG_xSTq57PYv-W0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "706940534467-6jrv8qm288sem63mo72svhapgcst22md.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
