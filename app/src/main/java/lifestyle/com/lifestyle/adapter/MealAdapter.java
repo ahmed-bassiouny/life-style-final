@@ -30,8 +30,8 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MyViewHolder> 
 
         @BindView(R.id.img)
         ImageView img;
-        @BindView(R.id.check)
-        CheckBox checkBox;
+        @BindView(R.id.tv_food)
+        TextView tvFood;
 
         public MyViewHolder(View view) {
             super(view);
@@ -49,8 +49,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         OwnMeal item = list.get(position);
-        MyGlide.setImageRound(holder.img, item.getPhoto());
-        holder.checkBox.setText(item.getName());
+        holder.tvFood.setText(item.getName());
     }
 
     @Override

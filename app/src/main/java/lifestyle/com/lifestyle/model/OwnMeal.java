@@ -3,11 +3,9 @@ package lifestyle.com.lifestyle.model;
 public class OwnMeal {
 
     private String name;
-    private String photo;
 
-    public OwnMeal(String name, String photo) {
+    public OwnMeal(String name) {
         this.name = name;
-        this.photo = photo;
     }
 
     public OwnMeal() {
@@ -19,13 +17,5 @@ public class OwnMeal {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
     }
 }

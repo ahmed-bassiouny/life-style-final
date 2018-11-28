@@ -72,7 +72,15 @@
         <item>الالبان</item>
         <item>البقوليات</item>
         <item>الدهون</item>
-
+    </array>
+    <array name="food_type_small">
+        <item>اختر نوع الطعام</item>
+        <item>بروتين</item>
+        <item>نشويات</item>
+        <item>الفاكهة</item>
+        <item>الخضروات</item>
+        <item>الالبان</item>
+        <item>الدهون</item>
     </array>
     <string name="title_activity_home">HomeActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

@@ -16,6 +16,7 @@ import butterknife.OnClick;
 import lifestyle.com.lifestyle.R;
 import lifestyle.com.lifestyle.activity.CreateMealActivity;
 import lifestyle.com.lifestyle.base.ui.BaseFragment;
+import lifestyle.com.lifestyle.dialog.ChooseMealTypeDialog;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,6 +63,8 @@ public class SelectMealTypeFragment extends BaseFragment {
 
     @OnClick(R.id.btn_create_meal)
     public void createMeal() {
-        startActivity(new Intent(mContext, CreateMealActivity.class));
+        //startActivity(new Intent(mContext, CreateMealActivity.class));
+        ChooseMealTypeDialog dialog = new ChooseMealTypeDialog(mContext);
+        dialog.show();
     }
 }

@@ -54,10 +54,10 @@ public class LoginController extends BaseController {
         public void success(User user) {
             SharedPrefManager.setObject(Constants.USER, user);
             getFragment().endLoading();
-            if(user.getBirthday().isEmpty()){
+            if (user.getBirthday().isEmpty()) {
                 // open calc calory
                 launchActivityWithFinish(CalcCaloryActivity.class);
-            }else {
+            } else {
                 SharedPrefManager.setString(Constants.CALORIES, calculateCalory(user));
                 launchActivityWithFinish(HomeActivity.class);
             }
@@ -73,7 +73,7 @@ public class LoginController extends BaseController {
     public void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+        /*    AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
             FirebaseAuth.getInstance().signInWithCredential(credential)
                     .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                         @Override
@@ -90,7 +90,8 @@ public class LoginController extends BaseController {
                                 showErrorMessage(task.getException().getMessage());
                             }
                         }
-                    });
+                    });*/
+            login(account.getEmail());
         } catch (ApiException e) {
             showErrorMessage(e.getMessage());
             getFragment().endLoading();

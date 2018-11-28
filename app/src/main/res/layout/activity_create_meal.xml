@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,15 +7,12 @@
     android:orientation="vertical"
     tools:context=".activity.CreateMealActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
 
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/contain_toolbar"
             android:background="@color/dark_blue">
 
             <include layout="@layout/toolbar" />
@@ -25,104 +22,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:id="@+id/contain_spinner"
+            android:layout_below="@+id/contain_toolbar"
             android:background="@drawable/border">
 
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/meals_type"
+                android:entries="@array/food_type_small"
+                android:id="@+id/spinner"
                 android:padding="5dp" />
         </FrameLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="وجبتك"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="@string/protein"
-            android:textColor="@color/black" />
+            android:textSize="18sp"
+            android:id="@+id/food"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/contain_spinner"
+            android:layout_margin="15dp"/>
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
             android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:layout_below="@+id/food"
+            android:layout_above="@+id/btn_save_meal"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:orientation="horizontal"
-            android:id="@+id/recycler_protein"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="@string/starches"
-            android:textColor="@color/black" />
-
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:orientation="horizontal"
-            android:layout_marginEnd="10dp"
-            android:id="@+id/recycler_starches"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="@string/vegetables"
-            android:textColor="@color/black" />
-
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:orientation="horizontal"
-            android:layout_marginEnd="10dp"
-            android:id="@+id/recycler_vegetables"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="@string/fruits"
-            android:textColor="@color/black" />
-
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:orientation="horizontal"
-            android:layout_marginEnd="10dp"
-            android:id="@+id/recycler_fruits"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="@string/milks"
-            android:textColor="@color/black" />
-
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:id="@+id/recycler_milks"/>
+            android:id="@+id/recycler"/>
 
 
         <Button
@@ -135,9 +68,10 @@
             android:textColor="@color/white"
             android:layout_marginTop="20dp"
             android:minHeight="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:textSize="16sp"
             android:layout_gravity="center"/>
 
-    </LinearLayout>
 
-</ScrollView>
+</RelativeLayout>

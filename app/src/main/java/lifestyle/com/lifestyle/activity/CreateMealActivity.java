@@ -3,6 +3,9 @@ package lifestyle.com.lifestyle.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,23 +15,18 @@ import butterknife.ButterKnife;
 import lifestyle.com.lifestyle.R;
 import lifestyle.com.lifestyle.adapter.MealAdapter;
 import lifestyle.com.lifestyle.base.ui.BaseActivity;
+import lifestyle.com.lifestyle.dialog.ChooseFoodDialog;
 import lifestyle.com.lifestyle.model.OwnMeal;
 
 public class CreateMealActivity extends BaseActivity {
 
 
-    @BindView(R.id.recycler_protein)
-    RecyclerView recyclerProtein;
-    @BindView(R.id.recycler_starches)
-    RecyclerView recyclerStarches;
-    @BindView(R.id.recycler_vegetables)
-    RecyclerView recyclerVegetables;
-    @BindView(R.id.recycler_fruits)
-    RecyclerView recyclerFruits;
-    @BindView(R.id.recycler_milks)
-    RecyclerView recyclerMilks;
+    @BindView(R.id.recycler)
+    RecyclerView recycler;
+    @BindView(R.id.spinner)
+    Spinner spinner;
 
-    private MealAdapter proteinAdapter, starchesAdapter, vegetablesAdapter, fruitsAdapter, milkAdapter;
+    private MealAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +38,25 @@ public class CreateMealActivity extends BaseActivity {
 
         // todo remove it
         List<OwnMeal> v =new ArrayList<>();
-        v.add(new OwnMeal("فول", "https://www.ma7shy.com/media/cache/image_recipe_large/uploads/media/%D9%81%D9%88%D9%84_1434925978.jpg"));
-        v.add(new OwnMeal("عدس", "https://www.ma7shy.com/media/cache/image_recipe_large/uploads/media/slow-cooker-yellow-lentil-dahl_eh3bnr_1462917176.jpg"));
-        proteinAdapter = new MealAdapter(v);
-        starchesAdapter = vegetablesAdapter = fruitsAdapter = milkAdapter = proteinAdapter;
-        // todo end
-        recyclerFruits.setAdapter(fruitsAdapter);
-        recyclerMilks.setAdapter(milkAdapter);
-        recyclerVegetables.setAdapter(vegetablesAdapter);
-        recyclerStarches.setAdapter(starchesAdapter);
-        recyclerProtein.setAdapter(proteinAdapter);
+    /*    v.add(new OwnMeal("فول"));
+        v.add(new OwnMeal("عيش"));
+        v.add(new OwnMeal("سلطة"));*/
+        adapter = new MealAdapter(v);
+
+        recycler.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                ChooseFoodDialog dialog = new ChooseFoodDialog(CreateMealActivity.this);
+                dialog.show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     @Override
