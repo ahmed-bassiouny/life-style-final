@@ -16,9 +16,11 @@ import bassiouny.ahmed.genericmanager.SharedPrefManager;
 import lifestyle.com.lifestyle.R;
 import lifestyle.com.lifestyle.activity.CalcCaloryActivity;
 import lifestyle.com.lifestyle.activity.HomeActivity;
+import lifestyle.com.lifestyle.alarms.Alarm;
 import lifestyle.com.lifestyle.api.RequestCallback;
 import lifestyle.com.lifestyle.base.ui.BaseController;
 import lifestyle.com.lifestyle.helper.Constants;
+import lifestyle.com.lifestyle.helper.DefaultValue;
 import lifestyle.com.lifestyle.helper.Equation;
 import lifestyle.com.lifestyle.interactor.IUserInteractor;
 import lifestyle.com.lifestyle.interactor.UserInteractor;
@@ -54,6 +56,9 @@ public class LoginController extends BaseController {
                 launchActivityWithFinish(CalcCaloryActivity.class);
             } else {
                 SharedPrefManager.setString(Constants.CALORIES, calculateCalory(user));
+                // set default value
+                DefaultValue.waterAlarm(getActivity());
+                Alarm.setAlarmForMeal(getActivity());
                 launchActivityWithFinish(HomeActivity.class);
             }
         }

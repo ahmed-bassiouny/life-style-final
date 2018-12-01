@@ -46,8 +46,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         hideStatusBar();
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
-        // set default value
-        DefaultValue.waterAlarm(this);
+
         ivFood.setOnClickListener(this);
         ivWater.setOnClickListener(this);
         ivBmi.setOnClickListener(this);
