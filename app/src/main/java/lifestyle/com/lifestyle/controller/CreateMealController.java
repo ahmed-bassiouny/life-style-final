@@ -64,15 +64,15 @@ public class CreateMealController extends BaseController {
         });
     }
 
-    public void getMealsWithType(String type, final IResult<Map<String, List<String>>> result) {
+    public void getMealsWithType(String type, final IResult<Map<String, List<Food>>> result) {
         if (!networkAvailable()) {
             showAlertConnection();
             return;
         }
         getiActivity().startLoading();
-        interactor.getMealsWithType(type, new RequestCallback<Map<String, List<String>>>() {
+        interactor.getMealsWithType(type, new RequestCallback<Map<String, List<Food>>>() {
             @Override
-            public void success(Map<String, List<String>> stringListMap) {
+            public void success(Map<String, List<Food>> stringListMap) {
                 result.result(stringListMap);
                 getiActivity().endLoading();
             }

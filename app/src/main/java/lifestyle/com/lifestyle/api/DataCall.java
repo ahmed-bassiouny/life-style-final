@@ -222,16 +222,16 @@ public class DataCall extends BaseDataCall implements IUserInteractor, IMealsInt
     }
 
     @Override
-    public void getMealsWithType(String type,final RequestCallback<Map<String,List<String>>> callback) {
-        Call<BaseResponse<Map<String,List<String>>>> responseCall = RetrofitConfig.httpApiInterface.getMealsWithType(type);
-        responseCall.enqueue(new Callback<BaseResponse<Map<String, List<String>>>>() {
+    public void getMealsWithType(String type,final RequestCallback<Map<String,List<Food>>> callback) {
+        Call<BaseResponse<Map<String,List<Food>>>> responseCall = RetrofitConfig.httpApiInterface.getMealsWithType();
+        responseCall.enqueue(new Callback<BaseResponse<Map<String, List<Food>>>>() {
             @Override
-            public void onResponse(Call<BaseResponse<Map<String, List<String>>>> call, Response<BaseResponse<Map<String, List<String>>>> response) {
+            public void onResponse(Call<BaseResponse<Map<String, List<Food>>>> call, Response<BaseResponse<Map<String, List<Food>>>> response) {
                 onDataResponse(response, callback);
             }
 
             @Override
-            public void onFailure(Call<BaseResponse<Map<String, List<String>>>> call, Throwable t) {
+            public void onFailure(Call<BaseResponse<Map<String, List<Food>>>> call, Throwable t) {
                 onDataFailure(t, callback);
 
             }
