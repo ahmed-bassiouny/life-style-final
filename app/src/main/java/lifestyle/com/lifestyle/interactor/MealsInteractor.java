@@ -1,6 +1,7 @@
 package lifestyle.com.lifestyle.interactor;
 
 import java.util.List;
+import java.util.Map;
 
 import lifestyle.com.lifestyle.api.DataCall;
 import lifestyle.com.lifestyle.api.RequestCallback;
@@ -30,6 +31,11 @@ public class MealsInteractor implements IMealsInteractor {
     @Override
     public void createMeal(FoodsId foodsId, RequestCallback callback) {
         interactor.createMeal(foodsId,callback);
+    }
+
+    @Override
+    public void getMealsWithType(String type, RequestCallback<Map<String, List<String>>> callback) {
+        interactor.getMealsWithType(type, callback);
     }
 
     @Override

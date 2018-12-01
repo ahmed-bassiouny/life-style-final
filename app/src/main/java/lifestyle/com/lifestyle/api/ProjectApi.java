@@ -88,4 +88,9 @@ public interface ProjectApi {
     @POST("meals/create/by/user")
     Call<BaseResponse> createMeal(@Body FoodsId foodsId);
 
+
+    @POST("")
+    Call<BaseResponse<Map<String,List<String>>>> getMealsWithType(@Field("type") String type);
+
+
 }

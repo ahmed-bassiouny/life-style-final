@@ -1,6 +1,7 @@
 package lifestyle.com.lifestyle.interactor;
 
 import java.util.List;
+import java.util.Map;
 
 import lifestyle.com.lifestyle.api.RequestCallback;
 import lifestyle.com.lifestyle.base.api.BaseList;
@@ -13,4 +14,6 @@ public interface IMealsInteractor {
     void addMeal(int mealId, RequestCallback callback);
     void getFoods(String type, RequestCallback<BaseList<Food>> callback);
     void createMeal(FoodsId foodsId, RequestCallback callback);
+    void getMealsWithType(String type,RequestCallback<Map<String,List<String>>> callback);
+
 }

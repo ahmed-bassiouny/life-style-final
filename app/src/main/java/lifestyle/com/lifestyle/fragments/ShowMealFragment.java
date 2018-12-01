@@ -122,6 +122,5 @@ public class ShowMealFragment extends BaseFragment implements BaseController.IRe
         }
         adapter.setList(meals.get(currentMeal).getFoods());
         tvHint.setText(String.format(Locale.getDefault(), " %s %s ", meals.get(currentMeal).getCaloriesCount(), getString(R.string.calory)));
-
     }
 }
