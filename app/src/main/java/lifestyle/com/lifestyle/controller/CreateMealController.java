@@ -2,6 +2,7 @@ package lifestyle.com.lifestyle.controller;
 
 import android.app.Activity;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -70,10 +71,14 @@ public class CreateMealController extends BaseController {
             return;
         }
         getiActivity().startLoading();
-        interactor.getMealsWithType(type, new RequestCallback<Map<String, List<Food>>>() {
+        interactor.getMealsWithType(type, new RequestCallback<List<Map<String, List<Food>>>>() {
             @Override
-            public void success(Map<String, List<Food>> stringListMap) {
-                result.result(stringListMap);
+            public void success(List<Map<String, List<Food>>> maps) {
+                Map<String, List<Food>> newData = new HashMap<>();
+                for (Map<String, List<Food>> map : maps){
+                    newData.putAll(map);
+                }
+                result.result(newData);
                 getiActivity().endLoading();
             }
 

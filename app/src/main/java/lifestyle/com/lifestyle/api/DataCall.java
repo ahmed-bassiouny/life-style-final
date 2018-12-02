@@ -5,6 +5,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -222,9 +223,9 @@ public class DataCall extends BaseDataCall implements IUserInteractor, IMealsInt
     }
 
     @Override
-    public void getMealsWithType(String type,final RequestCallback<Map<String,List<Food>>> callback) {
-        Call<BaseResponse<Map<String,List<Food>>>> responseCall = RetrofitConfig.httpApiInterface.getMealsWithType();
-        responseCall.enqueue(new Callback<BaseResponse<Map<String, List<Food>>>>() {
+    public void getMealsWithType(String type,final RequestCallback<List<Map<String,List<Food>>>> callback) {
+        Call<BaseResponse<List<Map<String,List<Food>>>>> responseCall = RetrofitConfig.httpApiInterface.getMealsWithType("breakfast");
+        /*responseCall.enqueue(new Callback<BaseResponse<Map<String, List<Food>>>>() {
             @Override
             public void onResponse(Call<BaseResponse<Map<String, List<Food>>>> call, Response<BaseResponse<Map<String, List<Food>>>> response) {
                 onDataResponse(response, callback);
@@ -234,6 +235,17 @@ public class DataCall extends BaseDataCall implements IUserInteractor, IMealsInt
             public void onFailure(Call<BaseResponse<Map<String, List<Food>>>> call, Throwable t) {
                 onDataFailure(t, callback);
 
+            }
+        });*/
+        responseCall.enqueue(new Callback<BaseResponse<List<Map<String, List<Food>>>>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<List<Map<String, List<Food>>>>> call, Response<BaseResponse<List<Map<String, List<Food>>>>> response) {
+                onDataResponse(response, callback);
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<List<Map<String, List<Food>>>>> call, Throwable t) {
+                onDataFailure(t, callback);
             }
         });
     }

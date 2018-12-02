@@ -89,9 +89,9 @@ public interface ProjectApi {
     Call<BaseResponse> createMeal(@Body FoodsId foodsId);
 
 
-    @GET("")
+    @POST("foods")
     @FormUrlEncoded
-    Call<BaseResponse<Map<String,List<Food>>>> getMealsWithType(@Field("type") String type);
+    Call<BaseResponse<List<Map<String,List<Food>>>>> getMealsWithType(@Field("meal") String type);
 
     @GET("https://ahmed-bassiouny.github.io/E-Commerce-Json/index2.json")
     Call<BaseResponse<Map<String,List<Food>>>> getMealsWithType();
