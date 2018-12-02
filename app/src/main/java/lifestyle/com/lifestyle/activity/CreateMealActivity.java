@@ -17,6 +17,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import lifestyle.com.lifestyle.R;
 import lifestyle.com.lifestyle.adapter.MealAdapter;
 import lifestyle.com.lifestyle.base.ui.BaseActivity;
@@ -42,6 +43,7 @@ public class CreateMealActivity extends BaseActivity implements BaseController.I
     private MealAdapter adapter;
     private CreateMealController controller;
     private Map<String, List<Food>> map;
+    private String mealType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +80,8 @@ public class CreateMealActivity extends BaseActivity implements BaseController.I
 
             }
         });
-        controller.getMealsWithType("", this);
+        mealType = getIntent().getStringExtra("data");
+        controller.getMealsWithType(mealType, this);
     }
 
     @Override
@@ -107,5 +110,14 @@ public class CreateMealActivity extends BaseActivity implements BaseController.I
     @Override
     public void getFood(Food food) {
         adapter.addFood(food);
+    }
+
+    @OnClick(R.id.btn_save_meal)
+    public void save(){
+        if(adapter.getItemCount() == 0){
+            controller.showErrorMessage("من فضلك قم باختيار طعام لتكوين وجبتك");
+        }else {
+            controller.createMeal(mealType,adapter.getList());
+        }
     }
 }

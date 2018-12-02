@@ -8,6 +8,7 @@ import lifestyle.com.lifestyle.base.api.BaseResponse;
 import lifestyle.com.lifestyle.model.Food;
 import lifestyle.com.lifestyle.model.FoodsId;
 import lifestyle.com.lifestyle.model.Meal;
+import lifestyle.com.lifestyle.model.OwnMeal;
 import lifestyle.com.lifestyle.model.User;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -93,8 +94,8 @@ public interface ProjectApi {
     @FormUrlEncoded
     Call<BaseResponse<List<Map<String,List<Food>>>>> getMealsWithType(@Field("meal") String type);
 
-    @GET("https://ahmed-bassiouny.github.io/E-Commerce-Json/index2.json")
-    Call<BaseResponse<Map<String,List<Food>>>> getMealsWithType();
+    @POST("calories/check")
+    Call<BaseResponse> createMeal(@Body OwnMeal ownMeal);
 
 
 }

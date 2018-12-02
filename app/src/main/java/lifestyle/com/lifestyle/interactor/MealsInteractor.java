@@ -9,6 +9,7 @@ import lifestyle.com.lifestyle.base.api.BaseList;
 import lifestyle.com.lifestyle.model.Food;
 import lifestyle.com.lifestyle.model.FoodsId;
 import lifestyle.com.lifestyle.model.Meal;
+import lifestyle.com.lifestyle.model.OwnMeal;
 
 public class MealsInteractor implements IMealsInteractor {
 
@@ -31,6 +32,11 @@ public class MealsInteractor implements IMealsInteractor {
     @Override
     public void createMeal(FoodsId foodsId, RequestCallback callback) {
         interactor.createMeal(foodsId,callback);
+    }
+
+    @Override
+    public void createMeal(OwnMeal ownMeal, RequestCallback callback) {
+        interactor.createMeal(ownMeal, callback);
     }
 
     @Override

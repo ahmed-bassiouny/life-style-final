@@ -19,6 +19,7 @@ import lifestyle.com.lifestyle.interactor.IUserInteractor;
 import lifestyle.com.lifestyle.model.Food;
 import lifestyle.com.lifestyle.model.FoodsId;
 import lifestyle.com.lifestyle.model.Meal;
+import lifestyle.com.lifestyle.model.OwnMeal;
 import lifestyle.com.lifestyle.model.User;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
@@ -223,20 +224,24 @@ public class DataCall extends BaseDataCall implements IUserInteractor, IMealsInt
     }
 
     @Override
+    public void createMeal(OwnMeal ownMeal, final RequestCallback callback) {
+        Call<BaseResponse> responseCall = RetrofitConfig.httpApiInterface.createMeal(ownMeal);
+        responseCall.enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                onDataResponseWithoutType(response, callback);
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                onDataFailure(t, callback);
+            }
+        });
+    }
+
+    @Override
     public void getMealsWithType(String type,final RequestCallback<List<Map<String,List<Food>>>> callback) {
         Call<BaseResponse<List<Map<String,List<Food>>>>> responseCall = RetrofitConfig.httpApiInterface.getMealsWithType("breakfast");
-        /*responseCall.enqueue(new Callback<BaseResponse<Map<String, List<Food>>>>() {
-            @Override
-            public void onResponse(Call<BaseResponse<Map<String, List<Food>>>> call, Response<BaseResponse<Map<String, List<Food>>>> response) {
-                onDataResponse(response, callback);
-            }
-
-            @Override
-            public void onFailure(Call<BaseResponse<Map<String, List<Food>>>> call, Throwable t) {
-                onDataFailure(t, callback);
-
-            }
-        });*/
         responseCall.enqueue(new Callback<BaseResponse<List<Map<String, List<Food>>>>>() {
             @Override
             public void onResponse(Call<BaseResponse<List<Map<String, List<Food>>>>> call, Response<BaseResponse<List<Map<String, List<Food>>>>> response) {

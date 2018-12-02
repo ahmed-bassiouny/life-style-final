@@ -6,21 +6,28 @@ import lifestyle.com.lifestyle.helper.Utils;
 
 public class Food {
 
+    public final static int CHO = 1 ;
+    public final static int FRUITS = 3 ;
+    public final static int VEG = 4 ;
+    public final static int PROTIEN = 5 ;
+    public final static int MILK = 6 ;
+    public final static int FAT = 8;
+
     @SerializedName("name")
     private String name;
     @SerializedName("calories")
     private String calories;
     @SerializedName("quantity")
     private String quantity;
-    @SerializedName("food_type")
-    private String foodType;
+    @SerializedName("food_type_id")
+    private int foodType;
 
     public String getQuantity() {
         return Utils.checkString(quantity);
     }
 
-    public String getFoodType() {
-        return Utils.checkString(foodType);
+    public int getFoodType() {
+        return foodType;
     }
 
     public String getName() {
@@ -38,4 +45,6 @@ public class Food {
             return 0;
         }
     }
+
+
 }

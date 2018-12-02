@@ -12,8 +12,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import lifestyle.com.lifestyle.R;
 import lifestyle.com.lifestyle.activity.CreateMealActivity;
+import lifestyle.com.lifestyle.model.OwnMeal;
 
 public class ChooseMealTypeDialog extends Dialog {
+
+    private Intent intent;
 
     public ChooseMealTypeDialog(@NonNull Context context) {
         super(context);
@@ -26,7 +29,7 @@ public class ChooseMealTypeDialog extends Dialog {
         ButterKnife.bind(this);
         setCancelable(false);
         setCanceledOnTouchOutside(false);
-
+        intent = new Intent(getContext(), CreateMealActivity.class);
     }
 
     @Override
@@ -37,7 +40,23 @@ public class ChooseMealTypeDialog extends Dialog {
 
     @OnClick(R.id.btn_breakfast)
     void breakfast(){
-        getContext().startActivity(new Intent(getContext(), CreateMealActivity.class));
+        intent.putExtra("data",OwnMeal.BREAKFAST);
+        getContext().startActivity(intent);
+        dismiss();
+    }
+
+    @OnClick(R.id.btn_lunch)
+    void lunch(){
+        intent.putExtra("data",OwnMeal.LUNCH);
+        getContext().startActivity(intent);
+        dismiss();
+    }
+
+    @OnClick(R.id.btn_dinner)
+    void dinner(){
+        intent.putExtra("data",OwnMeal.DINNER);
+        getContext().startActivity(intent);
+        dismiss();
     }
 
 }
