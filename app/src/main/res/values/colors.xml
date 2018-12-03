@@ -16,4 +16,11 @@
     <color name="dark_gray">#aaaaaa</color>
     <color name="light_black">#545454</color>
     <color name="purple">#9863e6</color>
+
+
+    <color name="item1">#0b749d</color>
+    <color name="item2">#64ccce</color>
+    <color name="item3">#f4b28c</color>
+    <color name="item4">#f78746</color>
+    <color name="item5">#d15360</color>
 </resources>

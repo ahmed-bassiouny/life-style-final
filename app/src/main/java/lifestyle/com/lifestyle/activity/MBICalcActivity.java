@@ -24,6 +24,7 @@ import lifestyle.com.lifestyle.adapter.WeightAdapter;
 import lifestyle.com.lifestyle.base.ui.BaseActivity;
 import lifestyle.com.lifestyle.controller.MBICalcController;
 import lifestyle.com.lifestyle.custome_views.CircleProgressBar;
+import lifestyle.com.lifestyle.dialog.BmiInfoDialog;
 import lifestyle.com.lifestyle.helper.Equation;
 
 public class MBICalcActivity extends BaseActivity {
@@ -97,10 +98,32 @@ public class MBICalcActivity extends BaseActivity {
         } else {
             float result = Equation.calBMI(weight, height);
             setBMI(result);
+            tvStatus.setVisibility(View.VISIBLE);
             tvStatus.setText(controller.getBMIStatus(result));
+            if (result < 18.5){
+                progressBar.changeColor(getResources().getColor(R.color.item1));
+                tvStatus.setTextColor(getResources().getColor(R.color.item1));
+            }else if (result >= 18.5 && result < 25){
+                progressBar.changeColor(getResources().getColor(R.color.item2));
+                tvStatus.setTextColor(getResources().getColor(R.color.item2));
+            }else if (result >=25 && result < 30){
+                progressBar.changeColor(getResources().getColor(R.color.item3));
+                tvStatus.setTextColor(getResources().getColor(R.color.item3));
+            }else if (result >=30 && result < 35){
+                progressBar.changeColor(getResources().getColor(R.color.item4));
+                tvStatus.setTextColor(getResources().getColor(R.color.item4));
+            }else if(result >= 35){
+                progressBar.changeColor(getResources().getColor(R.color.item5));
+                tvStatus.setTextColor(getResources().getColor(R.color.item5));
+            }
         }
     }
 
+
+    @OnClick(R.id.tv_status)
+    public void showDialog(){
+        new BmiInfoDialog(this).show();
+    }
 
     private void setBMI(final float newVal) {
         pro = 1;

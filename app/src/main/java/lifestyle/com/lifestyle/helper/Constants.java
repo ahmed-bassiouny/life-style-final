@@ -20,4 +20,5 @@ public interface Constants {
     int MIN_AGE = 10;
     String CALORIES = "calories";
     String WATER_ALARM_TYPE = "water_alarm_type";
+    String USER_NAME = "user_name";
 }

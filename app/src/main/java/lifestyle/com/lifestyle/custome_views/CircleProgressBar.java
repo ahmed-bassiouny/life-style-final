@@ -96,4 +96,10 @@ public class CircleProgressBar extends View {
     public float getProgress() {
         return progress;
     }
+
+    public void changeColor(int color){
+        backgroundPaint.setColor(adjustAlpha(color, 0.3f));
+        foregroundPaint.setColor(color);
+
+    }
 }

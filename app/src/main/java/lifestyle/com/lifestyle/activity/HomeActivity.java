@@ -39,6 +39,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     ImageView ivProfile;
     @BindView(R.id.iv_logout)
     ImageView ivLogout;
+    @BindView(R.id.tv_user_name)
+    TextView tvUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         ivAbout.setOnClickListener(this);
         ivProfile.setOnClickListener(this);
         ivLogout.setOnClickListener(this);
+        tvUserName.setText(" مرحبا "+SharedPrefManager.getString(Constants.USER_NAME));
     }
 
     @Override
