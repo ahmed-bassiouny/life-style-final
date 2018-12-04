@@ -103,6 +103,12 @@ public class LoginController extends BaseController {
         double bmrResut = Equation.calBMR(Integer.parseInt(user.getCurrentWeight()),
                 Integer.parseInt(user.getHeight()), user.getBirthday(), user.isMale());
         int tee = (int) Equation.getTEE(bmrResut);
-        return String.valueOf(tee);
+        if (user.getPurposeKey() == 0 ){
+            return String.valueOf(tee-700);
+        }else if (user.getPurposeKey() == 2 ){
+            return String.valueOf(tee+700);
+        }else {
+            return String.valueOf(tee);
+        }
     }
 }

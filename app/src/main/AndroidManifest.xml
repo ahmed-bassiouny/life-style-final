@@ -18,6 +18,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.HomeActivity" />
         <activity android:name=".activity.MBICalcActivity" />
+        <activity android:name=".activity.MyMBICalcActivity" />
         <activity android:name=".activity.CalcCaloryActivity" />
         <activity android:name=".activity.MealActivity" />
         <activity android:name=".activity.AuthActivity" />

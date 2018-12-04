@@ -37,9 +37,11 @@ public class AgeAdapter extends RecyclerView.Adapter<AgeAdapter.MyViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    selectedItem = getAdapterPosition();
-                    notifyDataSetChanged();
-                    clickAdapter.click(list.get(selectedItem),selectedItem);
+                    if(clickAdapter != null) {
+                        selectedItem = getAdapterPosition();
+                        notifyDataSetChanged();
+                        clickAdapter.click(list.get(selectedItem), selectedItem);
+                    }
                 }
             });
         }
@@ -72,5 +74,17 @@ public class AgeAdapter extends RecyclerView.Adapter<AgeAdapter.MyViewHolder> {
         if (list == null)
             return 0;
         return list.size();
+    }
+
+    public void setAge(int age) {
+        int size = list.size();
+        for (int i = 0; i < size; i++ ){
+            if(list.get(i) == age){
+                selectedItem = i;
+                notifyDataSetChanged();
+                clickAdapter.click(list.get(selectedItem), selectedItem);
+                break;
+            }
+        }
     }
 }

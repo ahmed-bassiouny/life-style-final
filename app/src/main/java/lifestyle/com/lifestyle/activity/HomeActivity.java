@@ -89,7 +89,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                 intent = new Intent(this, MBICalcActivity.class);
                 break;
             case R.id.iv_about:
-                Toast.makeText(this, "not available now", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this, MyMBICalcActivity.class);
                 break;
             case R.id.iv_profile:
                 intent = new Intent(this, CalcCaloryActivity.class);

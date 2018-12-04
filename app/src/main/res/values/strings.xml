@@ -164,4 +164,6 @@
     <string name="fruits">الفواكهه</string>
     <string name="milks">الالبان</string>
     <string name="save_meal">حفظ الوجبة</string>
+    <string name="my_bmi">My BMI</string>
+    <string name="bmi_cal">BMI Calculator</string>
 </resources>

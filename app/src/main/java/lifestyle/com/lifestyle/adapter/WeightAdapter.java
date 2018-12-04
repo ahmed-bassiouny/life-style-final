@@ -44,9 +44,11 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.MyViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    selectedItem = getAdapterPosition();
-                    notifyDataSetChanged();
-                    clickAdapter.click(list.get(selectedItem),selectedItem);
+                    if(clickAdapter != null) {
+                        selectedItem = getAdapterPosition();
+                        notifyDataSetChanged();
+                        clickAdapter.click(list.get(selectedItem), selectedItem);
+                    }
                 }
             });
         }
@@ -85,5 +87,17 @@ public class WeightAdapter extends RecyclerView.Adapter<WeightAdapter.MyViewHold
         selectedItem = position;
         notifyDataSetChanged();
         clickAdapter.click(list.get(selectedItem), selectedItem);
+    }
+
+    public void setWeight(int weight) {
+        int size = list.size();
+        for (int i = 0; i < size; i++ ){
+            if(list.get(i) == weight){
+                selectedItem = i;
+                notifyDataSetChanged();
+                clickAdapter.click(list.get(selectedItem), selectedItem);
+                break;
+            }
+        }
     }
 }

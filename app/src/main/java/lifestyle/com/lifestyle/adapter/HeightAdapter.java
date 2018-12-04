@@ -44,9 +44,11 @@ public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.MyViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    selectedItem = getAdapterPosition();
-                    notifyDataSetChanged();
-                    clickAdapter.click(list.get(selectedItem), selectedItem);
+                    if (clickAdapter != null) {
+                        selectedItem = getAdapterPosition();
+                        notifyDataSetChanged();
+                        clickAdapter.click(list.get(selectedItem), selectedItem);
+                    }
                 }
             });
         }
@@ -84,5 +86,17 @@ public class HeightAdapter extends RecyclerView.Adapter<HeightAdapter.MyViewHold
         selectedItem = position;
         notifyDataSetChanged();
         clickAdapter.click(list.get(selectedItem), selectedItem);
+    }
+
+    public void setHeight(int height) {
+        int size = list.size();
+        for (int i = 0; i < size; i++ ){
+            if(list.get(i) == height){
+                selectedItem = i;
+                notifyDataSetChanged();
+                clickAdapter.click(list.get(selectedItem), selectedItem);
+                break;
+            }
+        }
     }
 }
