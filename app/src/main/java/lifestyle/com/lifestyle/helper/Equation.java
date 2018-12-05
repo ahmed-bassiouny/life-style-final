@@ -65,4 +65,24 @@ public class Equation {
         }
         return 0;
     }
+
+    public static String calculateCalory(User user) {
+        int calcResult ;
+        double bmrResut = Equation.calBMR(Integer.parseInt(user.getCurrentWeight()),
+                Integer.parseInt(user.getHeight()), user.getBirthday(), user.isMale());
+        int tee = (int) Equation.getTEE(bmrResut);
+        if (user.getPurposeKey() == 0) {
+            calcResult = tee - 700;
+        } else if (user.getPurposeKey() == 2) {
+            calcResult = tee + 700;
+        } else {
+            calcResult = tee;
+        }
+        if (user.isMale() && calcResult < 1500) {
+            calcResult = 1500;
+        } else if (user.isFemale() && calcResult < 1200) {
+            calcResult = 1200;
+        }
+        return String.valueOf(calcResult);
+    }
 }

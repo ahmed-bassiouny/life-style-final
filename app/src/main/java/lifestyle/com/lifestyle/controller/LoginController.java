@@ -1,19 +1,13 @@
 package lifestyle.com.lifestyle.controller;
 
 import android.app.Activity;
-import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
-
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import bassiouny.ahmed.genericmanager.SharedPrefManager;
-import lifestyle.com.lifestyle.R;
 import lifestyle.com.lifestyle.activity.CalcCaloryActivity;
 import lifestyle.com.lifestyle.activity.HomeActivity;
 import lifestyle.com.lifestyle.alarms.Alarm;
@@ -55,7 +49,7 @@ public class LoginController extends BaseController {
                 // open calc calory
                 launchActivityWithFinish(CalcCaloryActivity.class);
             } else {
-                SharedPrefManager.setString(Constants.CALORIES, calculateCalory(user));
+                SharedPrefManager.setString(Constants.CALORIES, Equation.calculateCalory(user));
                 // set default value
                 DefaultValue.waterAlarm(getActivity());
                 Alarm.setAlarmForMeal(getActivity());
@@ -73,7 +67,7 @@ public class LoginController extends BaseController {
     public void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            SharedPrefManager.setString(Constants.USER_NAME,account.getDisplayName());
+            SharedPrefManager.setString(Constants.USER_NAME, account.getDisplayName());
         /*    AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
             FirebaseAuth.getInstance().signInWithCredential(credential)
                     .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
@@ -99,16 +93,4 @@ public class LoginController extends BaseController {
         }
     }
 
-    private String calculateCalory(User user) {
-        double bmrResut = Equation.calBMR(Integer.parseInt(user.getCurrentWeight()),
-                Integer.parseInt(user.getHeight()), user.getBirthday(), user.isMale());
-        int tee = (int) Equation.getTEE(bmrResut);
-        if (user.getPurposeKey() == 0 ){
-            return String.valueOf(tee-700);
-        }else if (user.getPurposeKey() == 2 ){
-            return String.valueOf(tee+700);
-        }else {
-            return String.valueOf(tee);
-        }
-    }
 }
