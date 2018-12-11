@@ -13,6 +13,7 @@ import java.util.Date;
 import bassiouny.ahmed.genericmanager.DateTimeManager;
 import bassiouny.ahmed.genericmanager.SharedPrefManager;
 import lifestyle.com.lifestyle.R;
+import lifestyle.com.lifestyle.broadcast.MyReceiverForCalory;
 import lifestyle.com.lifestyle.broadcast.MyReceiverForMeal;
 import lifestyle.com.lifestyle.broadcast.MyReceiverForWater;
 import lifestyle.com.lifestyle.helper.Constants;
@@ -137,6 +138,25 @@ public class Alarm {
         // add hours 11pm
         cal.add(Calendar.HOUR_OF_DAY, 3);
         intentAlarm.putExtra(Constants.NOTIFICATION, "ممكن ناكل زبادى");
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, PendingIntent.getBroadcast(context, 14, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, PendingIntent.getBroadcast(context, 15, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
     }
+
+    public static void resetCalory(Context context) {
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+
+        Intent intentAlarm = new Intent(context, MyReceiverForCalory.class);
+        // create the object
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        //set the alarm for particular time
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, PendingIntent.getBroadcast(context, 16, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+    }
+
 }

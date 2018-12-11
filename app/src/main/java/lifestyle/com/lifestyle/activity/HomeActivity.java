@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
 import lifestyle.com.lifestyle.R;
 import lifestyle.com.lifestyle.alarms.Alarm;
 import lifestyle.com.lifestyle.base.ui.BaseActivity;
+import lifestyle.com.lifestyle.custome_views.CircleProgressBar;
 import lifestyle.com.lifestyle.helper.Constants;
 import lifestyle.com.lifestyle.helper.DefaultValue;
 
@@ -41,6 +42,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     ImageView ivLogout;
     @BindView(R.id.tv_user_name)
     TextView tvUserName;
+    @BindView(R.id.custom_progressBar)
+    CircleProgressBar customProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +65,13 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     protected void onResume() {
         super.onResume();
         // set it here to update value
-        tvCal.setText(SharedPrefManager.getString(Constants.CALORIES) + " CAL ");
+        tvCal.setText(SharedPrefManager.getString(Constants.CURRENT_CALORY) + " CAL ");
+        try {
+            float result = Integer.parseInt(SharedPrefManager.getString(Constants.CURRENT_CALORY)) /Integer.parseInt(SharedPrefManager.getString(Constants.CALORIES));
+            customProgressBar.setProgress(result);
+        }catch (Exception e){
+
+        }
     }
 
     @Override

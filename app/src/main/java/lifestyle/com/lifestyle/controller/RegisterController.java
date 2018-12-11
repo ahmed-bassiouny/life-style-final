@@ -72,6 +72,7 @@ public class RegisterController extends BaseController {
             // set default value
             DefaultValue.waterAlarm(getActivity());
             Alarm.setAlarmForMeal(getActivity());
+            Alarm.resetCalory(getActivity());
         }
 
         @Override

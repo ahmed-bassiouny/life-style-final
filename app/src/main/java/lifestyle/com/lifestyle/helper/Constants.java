@@ -21,4 +21,5 @@ public interface Constants {
     String CALORIES = "calories";
     String WATER_ALARM_TYPE = "water_alarm_type";
     String USER_NAME = "user_name";
+    String CURRENT_CALORY = "current_calory";
 }
