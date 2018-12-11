@@ -97,7 +97,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             case R.id.iv_bmi:
                 intent = new Intent(this, MBICalcActivity.class);
                 break;
-            case R.id.iv_about:
+            case R.id.iv_my_bmi:
                 intent = new Intent(this, MyMBICalcActivity.class);
                 break;
             case R.id.iv_profile:

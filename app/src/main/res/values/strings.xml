@@ -166,4 +166,6 @@
     <string name="save_meal">حفظ الوجبة</string>
     <string name="my_bmi">My BMI</string>
     <string name="bmi_cal">BMI Calculator</string>
+    <string name="water">الماء</string>
+    <string name="logout">تسجيل الخروج</string>
 </resources>
