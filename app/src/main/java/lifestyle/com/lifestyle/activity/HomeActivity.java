@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,17 +30,17 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     @BindView(R.id.tv_cal)
     TextView tvCal;
     @BindView(R.id.iv_food)
-    ImageView ivFood;
+    FrameLayout ivFood;
     @BindView(R.id.iv_water)
-    ImageView ivWater;
+    FrameLayout ivWater;
     @BindView(R.id.iv_bmi)
-    ImageView ivBmi;
-    @BindView(R.id.iv_about)
-    ImageView ivAbout;
+    FrameLayout ivBmi;
+    @BindView(R.id.iv_my_bmi)
+    FrameLayout ivMyBmi;
     @BindView(R.id.iv_profile)
-    ImageView ivProfile;
+    FrameLayout ivProfile;
     @BindView(R.id.iv_logout)
-    ImageView ivLogout;
+    FrameLayout ivLogout;
     @BindView(R.id.tv_user_name)
     TextView tvUserName;
     @BindView(R.id.custom_progressBar)
@@ -55,7 +56,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         ivFood.setOnClickListener(this);
         ivWater.setOnClickListener(this);
         ivBmi.setOnClickListener(this);
-        ivAbout.setOnClickListener(this);
+        ivMyBmi.setOnClickListener(this);
         ivProfile.setOnClickListener(this);
         ivLogout.setOnClickListener(this);
         tvUserName.setText(" مرحبا "+SharedPrefManager.getString(Constants.USER_NAME));
@@ -68,7 +69,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         tvCal.setText(SharedPrefManager.getString(Constants.CURRENT_CALORY) + " CAL ");
         try {
             float result = Integer.parseInt(SharedPrefManager.getString(Constants.CURRENT_CALORY)) /Integer.parseInt(SharedPrefManager.getString(Constants.CALORIES));
-            customProgressBar.setProgress(result);
+            customProgressBar.setProgress(result*100);
         }catch (Exception e){
 
         }

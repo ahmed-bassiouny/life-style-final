@@ -50,6 +50,7 @@ public class LoginController extends BaseController {
                 launchActivityWithFinish(CalcCaloryActivity.class);
             } else {
                 SharedPrefManager.setString(Constants.CALORIES, Equation.calculateCalory(user));
+                SharedPrefManager.setString(Constants.CURRENT_CALORY, Equation.calculateCalory(user));
                 // set default value
                 DefaultValue.waterAlarm(getActivity());
                 Alarm.setAlarmForMeal(getActivity());
