@@ -114,9 +114,8 @@
                     android:text="@string/meals" />
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:scaleType="fitXY"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@drawable/meals"
                     android:layout_gravity="start|bottom" />
             </FrameLayout>
@@ -163,6 +162,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_color"
                     android:textStyle="bold"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center_horizontal"
                     android:gravity="center"
                     android:text="@string/bmi_cal" />
@@ -188,13 +188,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/text_color"
+                    android:layout_gravity="center_horizontal"
                     android:text="@string/my_bmi" />
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="start|bottom" />
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/my_bmi"
+                    android:layout_gravity="center_horizontal|bottom" />
             </FrameLayout>
 
 
@@ -211,13 +215,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/text_color"
                     android:text="@string/profile" />
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:src="@drawable/profile_icon"
                     android:layout_gravity="start|bottom" />
             </FrameLayout>
 
@@ -235,14 +241,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/text_color"
                     android:text="@string/logout" />
 
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_gravity="start|bottom" />
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/logout_icon"
+                    android:layout_gravity="end|bottom" />
             </FrameLayout>
 
         </RelativeLayout>
