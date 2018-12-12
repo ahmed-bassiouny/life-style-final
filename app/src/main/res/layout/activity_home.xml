@@ -107,12 +107,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/text_color"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
                     android:text="@string/meals" />
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/meals"
                     android:layout_gravity="start|bottom" />
             </FrameLayout>
 
@@ -129,12 +134,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/text_color"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
                     android:text="@string/water" />
 
                 <ImageView
-                    android:layout_width="40dp"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/water_icon"
                     android:layout_gravity="start|bottom" />
             </FrameLayout>
 
@@ -151,13 +161,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:textColor="@color/text_color"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
                     android:gravity="center"
                     android:text="@string/bmi_cal" />
 
                 <ImageView
-                    android:layout_width="40dp"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:src="@drawable/bmi_cal"
                     android:layout_gravity="start|bottom" />
             </FrameLayout>
 
