@@ -258,8 +258,8 @@ public class DataCall extends BaseDataCall implements IUserInteractor, IMealsInt
     }
 
     @Override
-    public void getMealsWithType(String type,final RequestCallback<List<Map<String,List<Food>>>> callback) {
-        Call<BaseResponse<List<Map<String,List<Food>>>>> responseCall = RetrofitConfig.httpApiInterface.getMealsWithType(type);
+    public void getMealsWithType(String type,String userCalories,final RequestCallback<List<Map<String,List<Food>>>> callback) {
+        Call<BaseResponse<List<Map<String,List<Food>>>>> responseCall = RetrofitConfig.httpApiInterface.getMealsWithType(type,userCalories);
         responseCall.enqueue(new Callback<BaseResponse<List<Map<String, List<Food>>>>>() {
             @Override
             public void onResponse(Call<BaseResponse<List<Map<String, List<Food>>>>> call, Response<BaseResponse<List<Map<String, List<Food>>>>> response) {

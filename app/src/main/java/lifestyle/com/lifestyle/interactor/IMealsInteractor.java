@@ -19,6 +19,6 @@ public interface IMealsInteractor {
     void getFoods(String type, RequestCallback<BaseList<Food>> callback);
     void createMeal(FoodsId foodsId, RequestCallback callback);
     void createMeal(OwnMeal ownMeal, RequestCallback<List<UserMeal>> callback);
-    void getMealsWithType(String type,RequestCallback<List<Map<String,List<Food>>>> callback);
+    void getMealsWithType(String type,String userCalories,RequestCallback<List<Map<String,List<Food>>>> callback);
 
 }

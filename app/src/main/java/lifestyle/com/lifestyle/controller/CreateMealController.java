@@ -129,7 +129,7 @@ public class CreateMealController extends BaseController {
             return;
         }
         getiActivity().startLoading();
-        interactor.getMealsWithType(type, new RequestCallback<List<Map<String, List<Food>>>>() {
+        interactor.getMealsWithType(type,String.valueOf(DefaultValue.getCalory()), new RequestCallback<List<Map<String, List<Food>>>>() {
             @Override
             public void success(List<Map<String, List<Food>>> maps) {
                 Map<String, List<Food>> newData = new HashMap<>();

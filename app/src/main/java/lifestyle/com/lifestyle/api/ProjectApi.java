@@ -100,7 +100,7 @@ public interface ProjectApi {
 
     @POST("foods")
     @FormUrlEncoded
-    Call<BaseResponse<List<Map<String,List<Food>>>>> getMealsWithType(@Field("meal") String type);
+    Call<BaseResponse<List<Map<String,List<Food>>>>> getMealsWithType(@Field("meal") String type,@Field("user_calories") String userCalories);
 
     @POST("calories/new/user/create/meal")
     Call<BaseResponse<List<UserMeal>>> createMeal(@Body OwnMeal ownMeal);

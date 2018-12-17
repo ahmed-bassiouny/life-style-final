@@ -46,8 +46,8 @@ public class MealsInteractor implements IMealsInteractor {
     }
 
     @Override
-    public void getMealsWithType(String type, RequestCallback<List<Map<String, List<Food>>>> callback) {
-        interactor.getMealsWithType(type, callback);
+    public void getMealsWithType(String type,String ca, RequestCallback<List<Map<String, List<Food>>>> callback) {
+        interactor.getMealsWithType(type,ca, callback);
     }
 
     @Override
