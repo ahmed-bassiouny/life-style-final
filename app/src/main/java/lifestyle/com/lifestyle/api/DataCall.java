@@ -22,6 +22,7 @@ import lifestyle.com.lifestyle.model.FoodsId;
 import lifestyle.com.lifestyle.model.Meal;
 import lifestyle.com.lifestyle.model.OwnMeal;
 import lifestyle.com.lifestyle.model.User;
+import lifestyle.com.lifestyle.model.UserMeal;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -241,16 +242,16 @@ public class DataCall extends BaseDataCall implements IUserInteractor, IMealsInt
     }
 
     @Override
-    public void createMeal(OwnMeal ownMeal, final RequestCallback callback) {
-        Call<BaseResponse> responseCall = RetrofitConfig.httpApiInterface.createMeal(ownMeal);
-        responseCall.enqueue(new Callback<BaseResponse>() {
+    public void createMeal(OwnMeal ownMeal, final RequestCallback<List<UserMeal>> callback) {
+        Call<BaseResponse<List<UserMeal>>> responseCall = RetrofitConfig.httpApiInterface.createMeal(ownMeal);
+        responseCall.enqueue(new Callback<BaseResponse<List<UserMeal>>>() {
             @Override
-            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                onDataResponseWithoutType(response, callback);
+            public void onResponse(Call<BaseResponse<List<UserMeal>>> call, Response<BaseResponse<List<UserMeal>>> response) {
+                onDataResponse(response, callback);
             }
 
             @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
+            public void onFailure(Call<BaseResponse<List<UserMeal>>> call, Throwable t) {
                 onDataFailure(t, callback);
             }
         });

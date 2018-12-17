@@ -11,6 +11,7 @@ import lifestyle.com.lifestyle.model.FoodsId;
 import lifestyle.com.lifestyle.model.Meal;
 import lifestyle.com.lifestyle.model.OwnMeal;
 import lifestyle.com.lifestyle.model.User;
+import lifestyle.com.lifestyle.model.UserMeal;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -101,8 +102,8 @@ public interface ProjectApi {
     @FormUrlEncoded
     Call<BaseResponse<List<Map<String,List<Food>>>>> getMealsWithType(@Field("meal") String type);
 
-    @POST("calories/check")
-    Call<BaseResponse> createMeal(@Body OwnMeal ownMeal);
+    @POST("calories/new/user/create/meal")
+    Call<BaseResponse<List<UserMeal>>> createMeal(@Body OwnMeal ownMeal);
 
 
 }

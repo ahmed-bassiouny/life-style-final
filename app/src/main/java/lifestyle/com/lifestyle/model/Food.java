@@ -13,6 +13,8 @@ public class Food {
     public final static int MILK = 6 ;
     public final static int FAT = 8;
 
+    @SerializedName("id")
+    private int id;
     @SerializedName("name")
     private String name;
     @SerializedName("calories")
@@ -58,5 +60,7 @@ public class Food {
         }
     }
 
-
+    public int getId() {
+        return id;
+    }
 }

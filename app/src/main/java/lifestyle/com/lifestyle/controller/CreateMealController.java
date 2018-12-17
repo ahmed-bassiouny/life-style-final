@@ -1,6 +1,7 @@
 package lifestyle.com.lifestyle.controller;
 
 import android.app.Activity;
+import android.view.WindowManager;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,12 +11,14 @@ import bassiouny.ahmed.genericmanager.SharedPrefManager;
 import lifestyle.com.lifestyle.api.RequestCallback;
 import lifestyle.com.lifestyle.base.api.BaseList;
 import lifestyle.com.lifestyle.base.ui.BaseController;
+import lifestyle.com.lifestyle.dialog.ShowUserMealDialog;
 import lifestyle.com.lifestyle.helper.Constants;
 import lifestyle.com.lifestyle.helper.DefaultValue;
 import lifestyle.com.lifestyle.interactor.IMealsInteractor;
 import lifestyle.com.lifestyle.interactor.MealsInteractor;
 import lifestyle.com.lifestyle.model.Food;
 import lifestyle.com.lifestyle.model.OwnMeal;
+import lifestyle.com.lifestyle.model.UserMeal;
 
 public class CreateMealController extends BaseController {
 
@@ -46,7 +49,7 @@ public class CreateMealController extends BaseController {
         });
     }
 
-    public void createMeal(String mealType, List<Food> foods) {
+    public void createMeal(final String mealType, List<Food> foods) {
         if (!networkAvailable()) {
             showAlertConnection();
             return;
@@ -57,32 +60,36 @@ public class CreateMealController extends BaseController {
         for (Food item : foods) {
             switch (item.getFoodType()) {
                 case Food.CHO:
-                    ownMeal.upCho();
+                    ownMeal.setCho(item.getId());
                     break;
                 case Food.FRUITS:
-                    ownMeal.upFruits();
+                    ownMeal.setFruits(item.getId());
                     break;
                 case Food.VEG:
-                    ownMeal.upVeg();
+                    ownMeal.setVeg(item.getId());
                     break;
                 case Food.PROTIEN:
-                    ownMeal.upProtien();
+                    ownMeal.setProtien(item.getId());
                     break;
                 case Food.MILK:
-                    ownMeal.upMilk();
+                    ownMeal.setMilk(item.getId());
                     break;
                 case Food.FAT:
-                    ownMeal.upFat();
+                    ownMeal.setFat(item.getId());
                     break;
             }
         }
         ownMeal.setUserCalories(String.valueOf(DefaultValue.getCalory()));
-        interactor.createMeal(ownMeal, new RequestCallback() {
+        interactor.createMeal(ownMeal, new RequestCallback<List<UserMeal>>() {
             @Override
-            public void success(Object o) {
+            public void success(List<UserMeal> userMeals) {
                 getiActivity().endLoading();
                 showSuccessMessage("تم تكوين الوجبة بنجاح");
-                getActivity().finish();
+                ShowUserMealDialog dialog = new ShowUserMealDialog(getActivity());
+                dialog.lists = userMeals;
+                dialog.titleStr = getTitleMeals(mealType);
+                dialog.show();
+
             }
 
             @Override
@@ -91,6 +98,29 @@ public class CreateMealController extends BaseController {
                 showMessage(msg);
             }
         });
+//        interactor.createMeal(ownMeal, new RequestCallback() {
+//            @Override
+//            public void success(Object o) {
+//                getiActivity().endLoading();
+//                showSuccessMessage("تم تكوين الوجبة بنجاح");
+//                getActivity().finish();
+//            }
+//
+//            @Override
+//            public void failed(String msg) {
+//
+//            }
+//        });
+    }
+
+    private String getTitleMeals(String mealType) {
+        if(mealType.equals(OwnMeal.BREAKFAST))
+            return "وجبة الافطار";
+        else if(mealType.equals(OwnMeal.LUNCH))
+            return "وجبة الغداء";
+        else if(mealType.equals(OwnMeal.DINNER))
+            return "وجبة العشاء";
+        else return "";
     }
 
     public void getMealsWithType(String type, final IResult<Map<String, List<Food>>> result) {

@@ -72,6 +72,14 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MyViewHolder> 
     }
 
     public void addFood(Food food) {
+        int size = list.size();
+        for(int i=0;i<size;i++){
+            if(list.get(i).getFoodType() == food.getFoodType()){
+                this.list.set(i,food);
+                notifyItemChanged(i);
+                return;
+            }
+        }
         this.list.add(0,food);
         notifyItemInserted(0);
     }
