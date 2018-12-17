@@ -13,7 +13,7 @@ import lifestyle.com.lifestyle.model.User;
 public class Equation {
 
 
-    public static double calBMR(int weight,int height,String birthday,boolean isMale) {
+    public static double calBMR(int weight, int height, String birthday, boolean isMale) {
         float result = 0;
        /*  user = SharedPrefManager.getObject(Constants.USER, User.class);
         float weight = Float.parseFloat(user.getCurrentWeight());
@@ -32,6 +32,7 @@ public class Equation {
         }
         return result;
     }
+
     public static float calBMI(float w, float h) {
         float height = h / 100;
         return w / (height * height);
@@ -67,7 +68,7 @@ public class Equation {
     }
 
     public static String calculateCalory(User user) {
-        int calcResult ;
+        int calcResult;
         double bmrResut = Equation.calBMR(Integer.parseInt(user.getCurrentWeight()),
                 Integer.parseInt(user.getHeight()), user.getBirthday(), user.isMale());
         int tee = (int) Equation.getTEE(bmrResut);
@@ -82,7 +83,8 @@ public class Equation {
             calcResult = 1500;
         } else if (user.isFemale() && calcResult < 1200) {
             calcResult = 1200;
-        }
+        } else if (calcResult > 1800)
+            calcResult = 1800;
         return String.valueOf(calcResult);
     }
 }

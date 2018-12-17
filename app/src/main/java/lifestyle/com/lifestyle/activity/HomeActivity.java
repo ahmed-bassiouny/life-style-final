@@ -66,10 +66,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
     protected void onResume() {
         super.onResume();
         // set it here to update value
-        tvCal.setText(SharedPrefManager.getString(Constants.CURRENT_CALORY) + " CAL ");
+        tvCal.setText(DefaultValue.getCalory() + " CAL ");
         try {
-            float result = Integer.parseInt(SharedPrefManager.getString(Constants.CURRENT_CALORY)) /Integer.parseInt(SharedPrefManager.getString(Constants.CALORIES));
-            customProgressBar.setProgress(result*100);
+            //float result = Integer.parseInt(SharedPrefManager.getString(Constants.CALORY)) /Integer.parseInt(SharedPrefManager.getString(Constants.CALORY));
+            customProgressBar.setProgress(100);
+
         }catch (Exception e){
 
         }

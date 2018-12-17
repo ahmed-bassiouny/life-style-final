@@ -38,6 +38,10 @@ public class Food {
         return foodType;
     }
 
+    public String getFoodTypeString() {
+        return Utils.checkString(foodTypeString);
+    }
+
     public String getName() {
         return Utils.checkString(name);
     }

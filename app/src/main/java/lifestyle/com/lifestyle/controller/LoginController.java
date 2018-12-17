@@ -49,8 +49,7 @@ public class LoginController extends BaseController {
                 // open calc calory
                 launchActivityWithFinish(CalcCaloryActivity.class);
             } else {
-                SharedPrefManager.setString(Constants.CALORIES, Equation.calculateCalory(user));
-                SharedPrefManager.setString(Constants.CURRENT_CALORY, Equation.calculateCalory(user));
+                DefaultValue.setCalory(user);
                 // set default value
                 DefaultValue.waterAlarm(getActivity());
                 Alarm.setAlarmForMeal(getActivity());

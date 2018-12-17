@@ -12,6 +12,7 @@ import lifestyle.com.lifestyle.api.RequestCallback;
 import lifestyle.com.lifestyle.base.api.BaseList;
 import lifestyle.com.lifestyle.base.ui.BaseController;
 import lifestyle.com.lifestyle.helper.Constants;
+import lifestyle.com.lifestyle.helper.DefaultValue;
 import lifestyle.com.lifestyle.interactor.IMealsInteractor;
 import lifestyle.com.lifestyle.interactor.MealsInteractor;
 import lifestyle.com.lifestyle.model.CustomMeal;
@@ -34,7 +35,7 @@ public class FoodProgramController extends BaseController {
         }
         getFragment().startLoading();
         this.result = result;
-        String calories =  SharedPrefManager.getString(Constants.CALORIES);
+        String calories =  String.valueOf(DefaultValue.getCalory());//SharedPrefManager.getString(Constants.CALORIES);
         interactor.getMeals(meals, calories, 0, 100, callback);
     }
 
@@ -45,8 +46,8 @@ public class FoodProgramController extends BaseController {
         }
         getFragment().startLoading();
         this.result2 = result;
-        String calories =  SharedPrefManager.getString(Constants.CALORIES);
-        interactor.getCustomMeals(meals, calories, 0, 100, callback2);
+
+        interactor.getCustomMeals(meals, String.valueOf(DefaultValue.getCalory()), 0, 100, callback2);
     }
 
     public void addMeal(int id, final IResult result) {

@@ -112,7 +112,7 @@ public class ShowMealFragment extends BaseFragment implements BaseController.IRe
     @Override
     public void result(List<CustomMeal> meals) {
         btnAnotherMeal.setVisibility(View.VISIBLE);
-        linearHint.setVisibility(View.VISIBLE);
+        //linearHint.setVisibility(View.VISIBLE);
         this.meals = meals;
         setFoodList();
     }
@@ -126,7 +126,7 @@ public class ShowMealFragment extends BaseFragment implements BaseController.IRe
         }
 
         List<Food> foods = new ArrayList<>();
-        for(CustomMeal item:meals){
+         CustomMeal item = meals.get(currentMeal);
             if(!item.getCho().isEmpty()){
                 foods.add(new Food(item.getCho(),"نشويات"));
             }
@@ -144,12 +144,10 @@ public class ShowMealFragment extends BaseFragment implements BaseController.IRe
             }
             if(!item.getNuts().isEmpty()){
                 foods.add(new Food(item.getNuts(),"مكسرات"));
-            }
-
 
         }
 
-        //adapter.setList(meals.get(currentMeal).getFoods());
+        adapter.setList(foods);
         //tvHint.setText(String.format(Locale.getDefault(), " %s %s ", meals.get(currentMeal).getCaloriesCount(), getString(R.string.calory)));
     }
 }

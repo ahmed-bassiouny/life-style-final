@@ -48,7 +48,7 @@ public class RegisterController extends BaseController {
         @Override
         public void success(User user) {
             SharedPrefManager.setObject(Constants.USER, user);
-            SharedPrefManager.setString(Constants.CALORIES, Equation.calculateCalory(user));
+            DefaultValue.setCalory(user);
             showErrorMessage(getActivity().getString(R.string.saved));
             getiActivity().endLoading();
             finishctivity();
@@ -65,8 +65,7 @@ public class RegisterController extends BaseController {
         @Override
         public void success(User user) {
             SharedPrefManager.setObject(Constants.USER, user);
-            SharedPrefManager.setString(Constants.CALORIES, Equation.calculateCalory(user));
-            SharedPrefManager.setString(Constants.CURRENT_CALORY, Equation.calculateCalory(user));
+            DefaultValue.setCalory(user);
             showErrorMessage(getActivity().getString(R.string.saved));
             getiActivity().endLoading();
             launchActivityWithFinishAndClearStack(HomeActivity.class);

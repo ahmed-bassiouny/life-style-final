@@ -8,6 +8,7 @@ import bassiouny.ahmed.genericmanager.CustomNotificationManager;
 import bassiouny.ahmed.genericmanager.SharedPrefManager;
 import lifestyle.com.lifestyle.R;
 import lifestyle.com.lifestyle.helper.Constants;
+import lifestyle.com.lifestyle.helper.DefaultValue;
 import lifestyle.com.lifestyle.helper.Equation;
 import lifestyle.com.lifestyle.model.User;
 
@@ -16,6 +17,6 @@ public class MyReceiverForCalory extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         User user = SharedPrefManager.getObject(Constants.USER,User.class);
         if(user != null)
-            SharedPrefManager.setString(Constants.CURRENT_CALORY, Equation.calculateCalory(user));
+            DefaultValue.setCalory(user);
     }
 }

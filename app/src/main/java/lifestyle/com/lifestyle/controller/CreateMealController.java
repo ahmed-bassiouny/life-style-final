@@ -11,6 +11,7 @@ import lifestyle.com.lifestyle.api.RequestCallback;
 import lifestyle.com.lifestyle.base.api.BaseList;
 import lifestyle.com.lifestyle.base.ui.BaseController;
 import lifestyle.com.lifestyle.helper.Constants;
+import lifestyle.com.lifestyle.helper.DefaultValue;
 import lifestyle.com.lifestyle.interactor.IMealsInteractor;
 import lifestyle.com.lifestyle.interactor.MealsInteractor;
 import lifestyle.com.lifestyle.model.Food;
@@ -75,7 +76,7 @@ public class CreateMealController extends BaseController {
                     break;
             }
         }
-        ownMeal.setUserCalories(SharedPrefManager.getString(Constants.CALORIES));
+        ownMeal.setUserCalories(String.valueOf(DefaultValue.getCalory()));
         interactor.createMeal(ownMeal, new RequestCallback() {
             @Override
             public void success(Object o) {

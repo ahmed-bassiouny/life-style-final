@@ -63,7 +63,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyViewHolder> 
             holder.tvCalory.setTextColor(context.getResources().getColor(R.color.dark_blue));
         }
         Food item = list.get(position);
-        holder.tvType.setText(item.getFoodType());
+        holder.tvType.setText(item.getFoodTypeString());
         holder.tvName.setText(item.getName());
         holder.tvCount.setText(item.getQuantity());
         holder.tvCalory.setText(item.getCalories());
