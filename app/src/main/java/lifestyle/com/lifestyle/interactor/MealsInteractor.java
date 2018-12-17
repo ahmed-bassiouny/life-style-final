@@ -6,6 +6,7 @@ import java.util.Map;
 import lifestyle.com.lifestyle.api.DataCall;
 import lifestyle.com.lifestyle.api.RequestCallback;
 import lifestyle.com.lifestyle.base.api.BaseList;
+import lifestyle.com.lifestyle.model.CustomMeal;
 import lifestyle.com.lifestyle.model.Food;
 import lifestyle.com.lifestyle.model.FoodsId;
 import lifestyle.com.lifestyle.model.Meal;
@@ -22,6 +23,11 @@ public class MealsInteractor implements IMealsInteractor {
     @Override
     public void getMeals(String meal, String calories,int offset, int limit, RequestCallback<BaseList<Meal>> callback) {
      interactor.getMeals(meal,calories,offset,limit,callback);
+    }
+
+    @Override
+    public void getCustomMeals(String meal, String calories, int offset, int limit, RequestCallback<BaseList<CustomMeal>> callback) {
+        interactor.getCustomMeals(meal, calories, offset, limit, callback);
     }
 
     @Override

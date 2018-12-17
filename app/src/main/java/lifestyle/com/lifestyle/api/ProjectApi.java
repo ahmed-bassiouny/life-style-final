@@ -5,6 +5,7 @@ import java.util.Map;
 
 import lifestyle.com.lifestyle.base.api.BaseList;
 import lifestyle.com.lifestyle.base.api.BaseResponse;
+import lifestyle.com.lifestyle.model.CustomMeal;
 import lifestyle.com.lifestyle.model.Food;
 import lifestyle.com.lifestyle.model.FoodsId;
 import lifestyle.com.lifestyle.model.Meal;
@@ -68,6 +69,12 @@ public interface ProjectApi {
     @FormUrlEncoded
     Call<BaseResponse<BaseList<Meal>>> getMeals(@Field("meal") String meal, @Field("calories") String calories,
                                                 @Field("offset") int offset, @Field("limit") int limit);
+
+
+    @POST("ready/meals")
+    @FormUrlEncoded
+    Call<BaseResponse<BaseList<CustomMeal>>> getCustomMeals(@Field("meal") String meal, @Field("calories") String calories,
+                                                      @Field("offset") int offset, @Field("limit") int limit);
 
     @POST("page")
     @FormUrlEncoded

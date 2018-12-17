@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -25,12 +26,14 @@ import lifestyle.com.lifestyle.adapter.FoodAdapter;
 import lifestyle.com.lifestyle.base.ui.BaseController;
 import lifestyle.com.lifestyle.base.ui.BaseFragment;
 import lifestyle.com.lifestyle.controller.FoodProgramController;
+import lifestyle.com.lifestyle.model.CustomMeal;
+import lifestyle.com.lifestyle.model.Food;
 import lifestyle.com.lifestyle.model.Meal;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ShowMealFragment extends BaseFragment implements BaseController.IResult<List<Meal>> {
+public class ShowMealFragment extends BaseFragment implements BaseController.IResult<List<CustomMeal>> {
 
 
     @BindView(R.id.recycler)
@@ -49,7 +52,7 @@ public class ShowMealFragment extends BaseFragment implements BaseController.IRe
     private FoodAdapter adapter;
     private String mealType = "";
     private FoodProgramController controller;
-    private List<Meal> meals;
+    private List<CustomMeal> meals;
     private int currentMeal = 0;
 
     public ShowMealFragment() {
@@ -74,7 +77,8 @@ public class ShowMealFragment extends BaseFragment implements BaseController.IRe
             adapter = new FoodAdapter(mContext);
             recycler.setAdapter(adapter);
             controller = new FoodProgramController(getMyActivity(), this);
-            controller.getMeals(mealType, this);
+            //controller.getMeals(mealType, this);
+            controller.getCustomMeals(mealType, this);
         }
     }
 
@@ -106,7 +110,7 @@ public class ShowMealFragment extends BaseFragment implements BaseController.IRe
     }
 
     @Override
-    public void result(List<Meal> meals) {
+    public void result(List<CustomMeal> meals) {
         btnAnotherMeal.setVisibility(View.VISIBLE);
         linearHint.setVisibility(View.VISIBLE);
         this.meals = meals;
@@ -120,7 +124,32 @@ public class ShowMealFragment extends BaseFragment implements BaseController.IRe
             tvHint.setVisibility(View.GONE);
             return;
         }
-        adapter.setList(meals.get(currentMeal).getFoods());
-        tvHint.setText(String.format(Locale.getDefault(), " %s %s ", meals.get(currentMeal).getCaloriesCount(), getString(R.string.calory)));
+
+        List<Food> foods = new ArrayList<>();
+        for(CustomMeal item:meals){
+            if(!item.getCho().isEmpty()){
+                foods.add(new Food(item.getCho(),"نشويات"));
+            }
+            if(!item.getProtien().isEmpty()){
+                foods.add(new Food(item.getProtien(),"بروتين"));
+            }
+            if(!item.getMilk().isEmpty()){
+                foods.add(new Food(item.getMilk(),"البان"));
+            }
+            if(!item.getVeg().isEmpty()){
+                foods.add(new Food(item.getVeg(),"خضروات"));
+            }
+            if(!item.getFruits().isEmpty()){
+                foods.add(new Food(item.getFruits(),"فواكهة"));
+            }
+            if(!item.getNuts().isEmpty()){
+                foods.add(new Food(item.getNuts(),"مكسرات"));
+            }
+
+
+        }
+
+        //adapter.setList(meals.get(currentMeal).getFoods());
+        //tvHint.setText(String.format(Locale.getDefault(), " %s %s ", meals.get(currentMeal).getCaloriesCount(), getString(R.string.calory)));
     }
 }

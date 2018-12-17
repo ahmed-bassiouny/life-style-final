@@ -21,6 +21,14 @@ public class Food {
     private String quantity;
     @SerializedName("food_type_id")
     private int foodType;
+    private String foodTypeString;
+    public Food() {
+    }
+
+    public Food(String name, String foodTypeString) {
+        this.name = name;
+        this.foodTypeString = foodTypeString;
+    }
 
     public String getQuantity() {
         return Utils.checkString(quantity);

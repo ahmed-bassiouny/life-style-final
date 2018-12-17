@@ -16,6 +16,7 @@ import lifestyle.com.lifestyle.helper.Utils;
 import lifestyle.com.lifestyle.interactor.IGeneralInteractor;
 import lifestyle.com.lifestyle.interactor.IMealsInteractor;
 import lifestyle.com.lifestyle.interactor.IUserInteractor;
+import lifestyle.com.lifestyle.model.CustomMeal;
 import lifestyle.com.lifestyle.model.Food;
 import lifestyle.com.lifestyle.model.FoodsId;
 import lifestyle.com.lifestyle.model.Meal;
@@ -186,6 +187,22 @@ public class DataCall extends BaseDataCall implements IUserInteractor, IMealsInt
 
             @Override
             public void onFailure(Call<BaseResponse<BaseList<Meal>>> call, Throwable t) {
+                onDataFailure(t, callback);
+            }
+        });
+    }
+
+    @Override
+    public void getCustomMeals(String meal, String calories, int offset, int limit, final RequestCallback<BaseList<CustomMeal>> callback) {
+        Call<BaseResponse<BaseList<CustomMeal>>> responseCall = RetrofitConfig.httpApiInterface.getCustomMeals(meal, calories, offset, limit);
+        responseCall.enqueue(new Callback<BaseResponse<BaseList<CustomMeal>>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<BaseList<CustomMeal>>> call, Response<BaseResponse<BaseList<CustomMeal>>> response) {
+                onDataResponse(response, callback);
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<BaseList<CustomMeal>>> call, Throwable t) {
                 onDataFailure(t, callback);
             }
         });
