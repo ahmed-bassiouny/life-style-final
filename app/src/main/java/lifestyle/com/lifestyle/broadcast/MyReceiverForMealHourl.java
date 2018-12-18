@@ -18,12 +18,14 @@ public class MyReceiverForMealHourl extends BroadcastReceiver {
         notifi.setIcon(R.mipmap.ic_launcher);
         Calendar cal = Calendar.getInstance();
         switch (cal.get(Calendar.HOUR_OF_DAY)){
-            case 16:
-                notifi.setBody("four");
+            case 17:
+                notifi.setTitle("LifeStyle");
+                notifi.setBody("يلا ناكس سناكس");
                 notifi.show(1);
                 break;
-            case 17:
-                notifi.setBody("five");
+            case 20:
+                notifi.setTitle("LifeStyle");
+                notifi.setBody("وقت العشاء");
                 notifi.show(1);
                 break;
         }
