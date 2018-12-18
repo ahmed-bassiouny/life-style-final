@@ -140,7 +140,7 @@ public class ShowMealFragment extends BaseFragment implements BaseController.IRe
                 foods.add(new Food(item.getVeg(),"خضروات"));
             }
             if(!item.getFruits().isEmpty()){
-                foods.add(new Food(item.getFruits(),"فواكهة"));
+                foods.add(new Food(item.getFruits(),"فاكهة"));
             }
             if(!item.getNuts().isEmpty()){
                 foods.add(new Food(item.getNuts(),"مكسرات"));

@@ -52,7 +52,7 @@ public class LoginController extends BaseController {
                 DefaultValue.setCalory(user);
                 // set default value
                 DefaultValue.waterAlarm(getActivity());
-                Alarm.setAlarmForMeal(getActivity());
+                Alarm.setEveryHourAlarm(getActivity());
                 Alarm.resetCalory(getActivity());
                 launchActivityWithFinish(HomeActivity.class);
             }

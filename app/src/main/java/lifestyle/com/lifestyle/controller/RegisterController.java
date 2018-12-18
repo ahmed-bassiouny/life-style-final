@@ -71,7 +71,7 @@ public class RegisterController extends BaseController {
             launchActivityWithFinishAndClearStack(HomeActivity.class);
             // set default value
             DefaultValue.waterAlarm(getActivity());
-            Alarm.setAlarmForMeal(getActivity());
+            Alarm.setEveryHourAlarm(getActivity());
             Alarm.resetCalory(getActivity());
         }
 
