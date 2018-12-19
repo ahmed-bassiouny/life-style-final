@@ -124,7 +124,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                                 GoogleSignIn.getClient(HomeActivity.this, gso).signOut();
                                 SharedPrefManager.clearSharedPref();
                                 startActivity(new Intent(HomeActivity.this, AuthActivity.class));
-                                Alarm.cancelPendindIntentForWater(HomeActivity.this);
+                                Alarm.cancelPendindIntent(HomeActivity.this);
                                 finish();
                             }
                         })

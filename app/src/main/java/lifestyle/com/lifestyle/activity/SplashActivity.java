@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import bassiouny.ahmed.genericmanager.SharedPrefManager;
 import lifestyle.com.lifestyle.R;
+import lifestyle.com.lifestyle.alarms.Alarm;
 import lifestyle.com.lifestyle.base.ui.BaseActivity;
 import lifestyle.com.lifestyle.helper.Constants;
 import lifestyle.com.lifestyle.model.User;
@@ -20,6 +21,7 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         hideStatusBar();
         setContentView(R.layout.activity_splash);
+        Alarm.setEveryHourAlarm(this);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

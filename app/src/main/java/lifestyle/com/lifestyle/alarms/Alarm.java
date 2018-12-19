@@ -100,6 +100,12 @@ public class Alarm {
         PendingIntent.getBroadcast(context, 3, intentAlarm,
                 PendingIntent.FLAG_UPDATE_CURRENT).cancel();
     }
+    public static void cancelPendindIntent(Context context) {
+        cancelPendindIntentForWater(context);
+        Intent intentAlarm = new Intent(context, MyReceiverForMealHourl.class);
+        PendingIntent.getBroadcast(context, 10, intentAlarm,
+                PendingIntent.FLAG_UPDATE_CURRENT).cancel();
+    }
 
     public static void setAlarmForMeal(Context context) {
 
@@ -145,13 +151,22 @@ public class Alarm {
 
     public static void setEveryHourAlarm(Context context) {
 
+
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.MINUTE, 0);
 
         Intent intentAlarm = new Intent(context, MyReceiverForMealHourl.class);
         // create the object
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_HOUR, PendingIntent.getBroadcast(context, 10, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_FIFTEEN_MINUTES, PendingIntent.getBroadcast(context, 10, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+
+
+        /*Intent _intent = new Intent(context, MyReceiverForMealHourl.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, _intent, 0);
+        AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+        // Remove any previous pending intent.
+        alarmManager.cancel(pendingIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, pendingIntent);*/
     }
 
     public static void resetCalory(Context context) {
