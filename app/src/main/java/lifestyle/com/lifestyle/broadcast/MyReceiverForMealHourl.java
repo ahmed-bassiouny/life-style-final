@@ -33,7 +33,7 @@ public class MyReceiverForMealHourl extends BroadcastReceiver {
 
         Calendar cal = Calendar.getInstance();
         String content = "";
-        switch (cal.get(Calendar.HOUR_OF_DAY)){
+        switch (cal.get(Calendar.HOUR_OF_DAY)) {
             case 8:
                 content = "وقت الفطار";
                 break;
@@ -52,10 +52,11 @@ public class MyReceiverForMealHourl extends BroadcastReceiver {
             case 23:
                 content = "ممكن ناكل زبادى";
                 break;
-                default: return;
+            default:
+                return;
         }
 
-        if(content.isEmpty())
+        if (content.isEmpty())
             return;
         String CHANNEL_ID = "your_name";// The id of the channel.
         CharSequence name = context.getResources().getString(R.string.app_name);// The user-visible name of the channel.
@@ -92,5 +93,12 @@ public class MyReceiverForMealHourl extends BroadcastReceiver {
         mBuilder.setDefaults(defaults);
         mBuilder.setAutoCancel(true);
         mNotificationManager.notify(5, mBuilder.build());
+
+        Intent _intent = new Intent(context, MyReceiverForMealHourl.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, _intent, 0);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        // Remove any previous pending intent.
+        alarmManager.cancel(pendingIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 3600000, pendingIntent);
     }
 }
