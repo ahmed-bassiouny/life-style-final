@@ -21,7 +21,6 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         hideStatusBar();
         setContentView(R.layout.activity_splash);
-        Alarm.setEveryHourAlarm(this);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

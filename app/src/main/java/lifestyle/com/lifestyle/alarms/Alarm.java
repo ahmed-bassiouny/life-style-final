@@ -158,7 +158,7 @@ public class Alarm {
         Intent intentAlarm = new Intent(context, MyReceiverForMealHourl.class);
         // create the object
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_FIFTEEN_MINUTES, PendingIntent.getBroadcast(context, 10, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_HOUR, PendingIntent.getBroadcast(context, 10, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
 
 
         /*Intent _intent = new Intent(context, MyReceiverForMealHourl.class);
