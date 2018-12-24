@@ -3,6 +3,7 @@ package lifestyle.com.lifestyle.broadcast;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +15,8 @@ import java.util.Calendar;
 import bassiouny.ahmed.genericmanager.CustomNotificationManager;
 import bassiouny.ahmed.genericmanager.SharedPrefManager;
 import lifestyle.com.lifestyle.R;
+import lifestyle.com.lifestyle.activity.MealActivity;
+import lifestyle.com.lifestyle.activity.WaterSettingActivity;
 import lifestyle.com.lifestyle.alarms.Alarm;
 import lifestyle.com.lifestyle.helper.Constants;
 
@@ -57,7 +60,11 @@ public class MyReceiverForWater extends BroadcastReceiver {
                     .setContentText(content);
 
         }
+        PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
+                new Intent(context, WaterSettingActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
+
+        mBuilder.setContentIntent(contentIntent);
         int defaults = 0;
         defaults = defaults | Notification.DEFAULT_LIGHTS;
         defaults = defaults | Notification.DEFAULT_VIBRATE;

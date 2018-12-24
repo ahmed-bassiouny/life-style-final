@@ -15,6 +15,7 @@ import java.util.Calendar;
 
 import bassiouny.ahmed.genericmanager.CustomNotificationManager;
 import lifestyle.com.lifestyle.R;
+import lifestyle.com.lifestyle.activity.MealActivity;
 import lifestyle.com.lifestyle.helper.Constants;
 
 public class MyReceiverForMealHourl extends BroadcastReceiver {
@@ -52,8 +53,6 @@ public class MyReceiverForMealHourl extends BroadcastReceiver {
             case 23:
                 content = "ممكن ناكل زبادى";
                 break;
-            default:
-                return;
         }
 
         if (content.isEmpty())
@@ -84,7 +83,11 @@ public class MyReceiverForMealHourl extends BroadcastReceiver {
                     .setContentText(content);
 
         }
+        PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
+                new Intent(context, MealActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
+
+        mBuilder.setContentIntent(contentIntent);
         int defaults = 0;
         defaults = defaults | Notification.DEFAULT_LIGHTS;
         defaults = defaults | Notification.DEFAULT_VIBRATE;
@@ -92,13 +95,15 @@ public class MyReceiverForMealHourl extends BroadcastReceiver {
 
         mBuilder.setDefaults(defaults);
         mBuilder.setAutoCancel(true);
+
         mNotificationManager.notify(5, mBuilder.build());
 
-        Intent _intent = new Intent(context, MyReceiverForMealHourl.class);
+        /*Intent _intent = new Intent(context, MyReceiverForMealHourl.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, _intent, 0);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         // Remove any previous pending intent.
         alarmManager.cancel(pendingIntent);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 3600000, pendingIntent);
+        cal.add(Calendar.MINUTE,5);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);*/
     }
 }

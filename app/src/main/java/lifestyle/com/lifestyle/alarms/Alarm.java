@@ -151,7 +151,7 @@ public class Alarm {
 
     public static void setEveryHourAlarm(Context context) {
 
-/*
+
 
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.MINUTE, 0);
@@ -159,16 +159,17 @@ public class Alarm {
         Intent intentAlarm = new Intent(context, MyReceiverForMealHourl.class);
         // create the object
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_HOUR, PendingIntent.getBroadcast(context, 10, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_HOUR, PendingIntent.getBroadcast(context, 20, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT));
 
-*/
 
+/*
         Intent _intent = new Intent(context, MyReceiverForMealHourl.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, _intent, 0);
         AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         // Remove any previous pending intent.
         alarmManager.cancel(pendingIntent);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, (System.currentTimeMillis() + 3600000), pendingIntent);
+        Calendar cal = Calendar.getInstance();
+        alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);*/
     }
 
     public static void resetCalory(Context context) {
