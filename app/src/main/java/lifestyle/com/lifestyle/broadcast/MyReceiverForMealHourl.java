@@ -53,6 +53,7 @@ public class MyReceiverForMealHourl extends BroadcastReceiver {
             case 23:
                 content = "ممكن ناكل زبادى";
                 break;
+                default: return;
         }
 
         if (content.isEmpty())
