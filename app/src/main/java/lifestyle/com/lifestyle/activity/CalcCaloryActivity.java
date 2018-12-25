@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.ycuwq.datepicker.date.DatePickerDialogFragment;
 
+import java.util.Calendar;
 import java.util.Locale;
 
 import bassiouny.ahmed.genericmanager.SharedPrefManager;
@@ -118,7 +119,7 @@ public class CalcCaloryActivity extends BaseActivity {
             @Override
             public void onDateChoose(int year, int month, int day) {
                 // formate is yyyy-MM-dd
-                if (year > 5)
+                if ((Calendar.getInstance().get(Calendar.YEAR) - year ) >= 5)
                     etBirthday.setText(String.format(Locale.ENGLISH, "%d-%d-%d", year, month, day));
                 else {
                     controller.showErrorMessage("يجب ان يكون العمر اكتر من ٥ سنوات");
