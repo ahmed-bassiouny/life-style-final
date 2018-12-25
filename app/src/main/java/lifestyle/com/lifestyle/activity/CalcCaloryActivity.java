@@ -1,16 +1,15 @@
 package lifestyle.com.lifestyle.activity;
 
 import android.graphics.Color;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.ycuwq.datepicker.date.DatePickerDialogFragment;
 
@@ -30,7 +29,6 @@ import lifestyle.com.lifestyle.controller.RegisterController;
 import lifestyle.com.lifestyle.custome_views.MyDatePickerDialogFragment;
 import lifestyle.com.lifestyle.fragments.WorkTypeListDialogFragment;
 import lifestyle.com.lifestyle.helper.Constants;
-import lifestyle.com.lifestyle.helper.Equation;
 import lifestyle.com.lifestyle.model.User;
 
 public class CalcCaloryActivity extends BaseActivity {
@@ -120,7 +118,11 @@ public class CalcCaloryActivity extends BaseActivity {
             @Override
             public void onDateChoose(int year, int month, int day) {
                 // formate is yyyy-MM-dd
-                etBirthday.setText(String.format(Locale.ENGLISH, "%d-%d-%d", year, month, day));
+                if (year > 5)
+                    etBirthday.setText(String.format(Locale.ENGLISH, "%d-%d-%d", year, month, day));
+                else {
+                    controller.showErrorMessage("يجب ان يكون العمر اكتر من ٥ سنوات");
+                }
             }
         });
     }
