@@ -16,20 +16,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.HomeActivity" />
-        <activity android:name=".activity.MBICalcActivity" />
-        <activity android:name=".activity.MyMBICalcActivity" />
-        <activity android:name=".activity.CalcCaloryActivity" />
-        <activity android:name=".activity.MealActivity" />
-        <activity android:name=".activity.AuthActivity" />
-        <activity android:name=".activity.SplashActivity">
+        <activity android:name=".activity.HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MBICalcActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MyMBICalcActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.CalcCaloryActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MealActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AuthActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.WaterSettingActivity"></activity>
+        <activity android:name=".activity.WaterSettingActivity"
+            android:screenOrientation="portrait"/>
 
         <receiver android:name=".broadcast.MyReceiverForWater">
             <intent-filter>
@@ -54,7 +62,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".activity.CreateMealActivity"></activity>
+        <activity android:name=".activity.CreateMealActivity"
+            android:screenOrientation="portrait"/>
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="a07905da1fb4c784f0369b04a71691297ca15843" />
